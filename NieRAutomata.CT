@@ -4,14 +4,14 @@
     <CheatEntry>
       <ID>45</ID>
       <Description>"金币"</Description>
-      <LastState Value="9000000" Activated="1" RealAddress="14197C4C0"/>
+      <LastState Value="8999900" RealAddress="14197C4C0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>NieRAutomata.exe+197C4C0</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>43</ID>
       <Description>"怪物攻击伤害改为0"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>define(address,"NieRAutomata.exe"+1FA423)
 define(bytes,29 BB 68 06 01 00)
@@ -24,6 +24,7 @@ label(code)
 label(return)
 
 newmem:
+
 code:
   // sub [rbx+00010668],edi
   // 将受到的伤害直接改为0
@@ -36,7 +37,6 @@ address:
 return:
 
 [DISABLE]
-//code from here till the end of the code will be used to disable the cheat
 address:
   db bytes
   // sub [rbx+00010668],edi
@@ -75,7 +75,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>89</ID>
       <Description>"受到异常伤害改为0 (入侵失败,高处落下,落水)"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>define(address,"NieRAutomata.exe"+1FA5B1)
 define(bytes,29 BB 68 06 01 00)
@@ -138,7 +138,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>96</ID>
       <Description>"[9S]进入入侵后无敌"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>define(address,"NieRAutomata.exe"+20DB0A)
 define(bytes,FF 89 DC 28 01 00)
@@ -207,7 +207,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>84</ID>
       <Description>"修改攻击力"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>define(address,"NieRAutomata.exe"+1FE372)
 define(bytes,89 88 1C 3B 00 00)
@@ -277,177 +277,22 @@ dealloc(newmem)
         <CheatEntry>
           <ID>85</ID>
           <Description>"可修改的攻击力"</Description>
-          <LastState Value="100000" RealAddress="13FFC000F"/>
           <VariableType>4 Bytes</VariableType>
           <Address>intAttackPower</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>86</ID>
-      <Description>"道具"</Description>
-      <Options moManualExpandCollapse="1" moActivateChildrenAsWell="1"/>
-      <LastState Value="" Activated="1" RealAddress="00000000"/>
-      <GroupHeader>1</GroupHeader>
-      <Address/>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>50</ID>
-          <Description>"道具-辅助-1"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C5F8"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>NieRAutomata.exe+197C5F8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>49</ID>
-          <Description>"道具-辅助-2 (偏移0x30)"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C628"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>NieRAutomata.exe+197C628</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>58</ID>
-          <Description>"道具-素材-1-铜矿"</Description>
-          <LastState Value="88" Activated="1" RealAddress="14197C58C"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>CC</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>70</ID>
-          <Description>"道具-素材-2-铁矿"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C580"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>C0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>71</ID>
-          <Description>"道具-素材-3-坏掉的发条"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C598"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>cc+c</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>72</ID>
-          <Description>"道具-素材-4-弯曲的金属丝"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C5A4"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>cc+c+c</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>74</ID>
-          <Description>"道具-素材-5-输液"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C5EC"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>fc+30</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>73</ID>
-          <Description>"道具-素材-5-水晶"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C5BC"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>FC</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>75</ID>
-          <Description>"声音资料：第一集"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C5C8"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>108</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>76</ID>
-          <Description>"香袋"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C5E0"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>120</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>77</ID>
-          <Description>"金钱掉落提升：大"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C604"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>144</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>78</ID>
-          <Description>"琥珀"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C610"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>150</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>79</ID>
-          <Description>"铁矿"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C580"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>C0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>80</ID>
-          <Description>"果实"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C574"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>B4</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>81</ID>
-          <Description>"复杂的机械"</Description>
-          <LastState Value="99" Activated="1" RealAddress="14197C568"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"NieRAutomata.exe"+0105D480</Address>
-          <Offsets>
-            <Offset>A8</Offset>
-          </Offsets>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
       <ID>46</ID>
       <Description>"经验值(满级99)"</Description>
-      <LastState Value="10000000" RealAddress="141984670"/>
+      <LastState Value="2217165" RealAddress="141984670"/>
       <VariableType>4 Bytes</VariableType>
       <Address>NieRAutomata.exe+1984670</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>94</ID>
       <Description>"hp"</Description>
-      <LastState Value="9057" RealAddress="0F6AC0A8"/>
+      <LastState Value="9057" RealAddress="0F60E3C8"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"NieRAutomata.exe"+017C0530</Address>
       <Offsets>
@@ -460,7 +305,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>97</ID>
       <Description>"血上限"</Description>
-      <LastState Value="9057" RealAddress="0F69C29C"/>
+      <LastState Value="9057" RealAddress="0F5FE5BC"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"NieRAutomata.exe"+017C0530</Address>
       <Offsets>
@@ -469,6 +314,405 @@ dealloc(newmem)
         <Offset>248</Offset>
         <Offset>18</Offset>
       </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>99</ID>
+      <Description>"背包 公式=14194BF60+(材料id*3+C159)*4+8"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <Address/>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>102</ID>
+          <Description>"复杂的机械"</Description>
+          <LastState Value="55" RealAddress="14197C568"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>14194BF60 + C180 * 4+8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>103</ID>
+          <Description>"果实"</Description>
+          <LastState Value="99" RealAddress="14197C574"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>14194BF60 + C183 * 4+8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>106</ID>
+          <Description>"铜矿"</Description>
+          <LastState Value="99" RealAddress="14197C58C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>14194BF60 + C189 * 4+8</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104</ID>
+      <Description>"材料变化，将改为99"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(address,"NieRAutomata.exe"+5DCFF6)
+define(bytes,44 01 40 08 83 78 08 00)
+
+[ENABLE]
+assert(address,bytes)
+alloc(newmem,$1000,"NieRAutomata.exe"+5DCFF6)
+
+label(code)
+label(return)
+
+newmem:
+  mov r8d,0x63
+code:
+  add [rax+08],r8d
+  cmp dword ptr [rax+08],00
+  jmp return
+
+address:
+  jmp newmem
+  nop 3
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+address:
+  db bytes
+  // add [rax+08],r8d
+  // cmp dword ptr [rax+08],00
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+5DCFF6
+
+"NieRAutomata.exe"+5DCFD9: E8 82 FF FF FF        -  call NieRAutomata.exe+5DCF60
+"NieRAutomata.exe"+5DCFDE: 83 F8 FF              -  cmp eax,-01
+"NieRAutomata.exe"+5DCFE1: 74 4E                 -  je NieRAutomata.exe+5DD031
+"NieRAutomata.exe"+5DCFE3: 85 C0                 -  test eax,eax
+"NieRAutomata.exe"+5DCFE5: 78 42                 -  js NieRAutomata.exe+5DD029
+"NieRAutomata.exe"+5DCFE7: 8B C8                 -  mov ecx,eax
+"NieRAutomata.exe"+5DCFE9: E8 A2 D7 20 00        -  call NieRAutomata.exe+7EA790
+"NieRAutomata.exe"+5DCFEE: 48 8B D8              -  mov rbx,rax
+"NieRAutomata.exe"+5DCFF1: 48 85 C0              -  test rax,rax
+"NieRAutomata.exe"+5DCFF4: 74 33                 -  je NieRAutomata.exe+5DD029
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+5DCFF6: 44 01 40 08           -  add [rax+08],r8d
+"NieRAutomata.exe"+5DCFFA: 83 78 08 00           -  cmp dword ptr [rax+08],00
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+5DCFFE: 7F 19                 -  jg NieRAutomata.exe+5DD019
+"NieRAutomata.exe"+5DD000: 48 C7 00 FF FF FF FF  -  mov qword ptr [rax],FFFFFFFFFFFFFFFF
+"NieRAutomata.exe"+5DD007: C7 40 08 00 00 00 00  -  mov [rax+08],00000000
+"NieRAutomata.exe"+5DD00E: B8 01 00 00 00        -  mov eax,00000001
+"NieRAutomata.exe"+5DD013: 48 83 C4 20           -  add rsp,20
+"NieRAutomata.exe"+5DD017: 5B                    -  pop rbx
+"NieRAutomata.exe"+5DD018: C3                    -  ret 
+"NieRAutomata.exe"+5DD019: 41 8B D2              -  mov edx,r10d
+"NieRAutomata.exe"+5DD01C: E8 DF 19 00 00        -  call NieRAutomata.exe+5DEA00
+"NieRAutomata.exe"+5DD021: 39 43 08              -  cmp [rbx+08],eax
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>105</ID>
+      <Description>"材料上限"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(address,"NieRAutomata.exe"+5DD021)
+define(bytes,39 43 08 7E 19)
+
+[ENABLE]
+assert(address,bytes)
+alloc(newmem,$1000,"NieRAutomata.exe"+5DD021)
+
+label(code)
+label(return)
+
+newmem:
+  mov eax, 0x63
+code:
+  cmp [rbx+08],eax
+  jle NieRAutomata.exe+5DD03F
+  jmp return
+
+address:
+  jmp newmem
+return:
+
+[DISABLE]
+address:
+  db bytes
+  // cmp [rbx+08],eax
+  // jle NieRAutomata.exe+5DD03F
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+5DD021
+
+"NieRAutomata.exe"+5DCFFA: 83 78 08 00           -  cmp dword ptr [rax+08],00
+"NieRAutomata.exe"+5DCFFE: 7F 19                 -  jg NieRAutomata.exe+5DD019
+"NieRAutomata.exe"+5DD000: 48 C7 00 FF FF FF FF  -  mov qword ptr [rax],FFFFFFFFFFFFFFFF
+"NieRAutomata.exe"+5DD007: C7 40 08 00 00 00 00  -  mov [rax+08],00000000
+"NieRAutomata.exe"+5DD00E: B8 01 00 00 00        -  mov eax,00000001
+"NieRAutomata.exe"+5DD013: 48 83 C4 20           -  add rsp,20
+"NieRAutomata.exe"+5DD017: 5B                    -  pop rbx
+"NieRAutomata.exe"+5DD018: C3                    -  ret 
+"NieRAutomata.exe"+5DD019: 41 8B D2              -  mov edx,r10d
+"NieRAutomata.exe"+5DD01C: E8 DF 19 00 00        -  call NieRAutomata.exe+5DEA00
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+5DD021: 39 43 08              -  cmp [rbx+08],eax
+"NieRAutomata.exe"+5DD024: 7E 19                 -  jle NieRAutomata.exe+5DD03F
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+5DD026: 89 43 08              -  mov [rbx+08],eax
+"NieRAutomata.exe"+5DD029: 33 C0                 -  xor eax,eax
+"NieRAutomata.exe"+5DD02B: 48 83 C4 20           -  add rsp,20
+"NieRAutomata.exe"+5DD02F: 5B                    -  pop rbx
+"NieRAutomata.exe"+5DD030: C3                    -  ret 
+"NieRAutomata.exe"+5DD031: 45 85 C0              -  test r8d,r8d
+"NieRAutomata.exe"+5DD034: 7E F3                 -  jle NieRAutomata.exe+5DD029
+"NieRAutomata.exe"+5DD036: E8 15 00 00 00        -  call NieRAutomata.exe+5DD050
+"NieRAutomata.exe"+5DD03B: 85 C0                 -  test eax,eax
+"NieRAutomata.exe"+5DD03D: 74 EA                 -  je NieRAutomata.exe+5DD029
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>107</ID>
+      <Description>"打开道具时，访问材料"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECT,NieRAutomata.exe,83 79 08 00 7E 03)
+alloc(newmem,$1000,"NieRAutomata.exe"+5DD57A)
+
+label(code)
+label(return)
+
+newmem:
+  cmp [rcx+08], (int)99
+  jae code
+  mov [rcx+08], (int)99 // 在访问的时候直接写入数据
+code:
+  cmp dword ptr [rcx+08],00
+  jle NieRAutomata.exe+5DD583
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db 83 79 08 00 7E 03
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+5DD57A
+
+"NieRAutomata.exe"+5DD55B: 77 06                             -  ja NieRAutomata.exe+5DD563
+"NieRAutomata.exe"+5DD55D: 44 0F A3 C3                       -  bt ebx,r8d
+"NieRAutomata.exe"+5DD561: 72 20                             -  jb NieRAutomata.exe+5DD583
+"NieRAutomata.exe"+5DD563: 3D 9A 01 00 00                    -  cmp eax,0000019A
+"NieRAutomata.exe"+5DD568: 74 19                             -  je NieRAutomata.exe+5DD583
+"NieRAutomata.exe"+5DD56A: 05 59 FC FF FF                    -  add eax,FFFFFC59
+"NieRAutomata.exe"+5DD56F: 83 F8 3B                          -  cmp eax,3B
+"NieRAutomata.exe"+5DD572: 77 06                             -  ja NieRAutomata.exe+5DD57A
+"NieRAutomata.exe"+5DD574: 48 0F A3 C7                       -  bt rdi,rax
+"NieRAutomata.exe"+5DD578: 72 09                             -  jb NieRAutomata.exe+5DD583
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+5DD57A: 83 79 08 00                       -  cmp dword ptr [rcx+08],00
+"NieRAutomata.exe"+5DD57E: 7E 03                             -  jle NieRAutomata.exe+5DD583
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+5DD580: 41 FF C2                          -  inc r10d
+"NieRAutomata.exe"+5DD583: FF C2                             -  inc edx
+"NieRAutomata.exe"+5DD585: 49 83 C1 0C                       -  add r9,0C
+"NieRAutomata.exe"+5DD589: 81 FA C8 01 00 00                 -  cmp edx,000001C8
+"NieRAutomata.exe"+5DD58F: 0F 8C 7B FF FF FF                 -  jl NieRAutomata.exe+5DD510
+"NieRAutomata.exe"+5DD595: 48 8B 5C 24 08                    -  mov rbx,[rsp+08]
+"NieRAutomata.exe"+5DD59A: 48 8B 7C 24 10                    -  mov rdi,[rsp+10]
+"NieRAutomata.exe"+5DD59F: 41 8B C2                          -  mov eax,r10d
+"NieRAutomata.exe"+5DD5A2: C3                                -  ret 
+"NieRAutomata.exe"+5DD5A3: CC                                -  int 3 
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>108</ID>
+      <Description>"进入游戏时，材料访问)无效"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT,NieRAutomata.exe,0F 28 4A F0 41 0F 29 48 F0)
+alloc(newmem,$1000,"NieRAutomata.exe"+7E8A2C)
+
+label(code)
+label(return)
+
+newmem:
+  cmp [rdx-10], (int)99
+  jae code
+  mov [rdx-10], (int)99
+code:
+  movaps xmm1,[rdx-10]
+  movaps [r8-10],xmm1
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 4
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+INJECT:
+  db 0F 28 4A F0 41 0F 29 48 F0
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+7E8A2C
+
+"NieRAutomata.exe"+7E89FF: 0F 28 42 A0                 -  movaps xmm0,[rdx-60]
+"NieRAutomata.exe"+7E8A03: 41 0F 29 40 A0              -  movaps [r8-60],xmm0
+"NieRAutomata.exe"+7E8A08: 0F 28 4A B0                 -  movaps xmm1,[rdx-50]
+"NieRAutomata.exe"+7E8A0C: 41 0F 29 48 B0              -  movaps [r8-50],xmm1
+"NieRAutomata.exe"+7E8A11: 0F 28 42 C0                 -  movaps xmm0,[rdx-40]
+"NieRAutomata.exe"+7E8A15: 41 0F 29 40 C0              -  movaps [r8-40],xmm0
+"NieRAutomata.exe"+7E8A1A: 0F 28 4A D0                 -  movaps xmm1,[rdx-30]
+"NieRAutomata.exe"+7E8A1E: 41 0F 29 48 D0              -  movaps [r8-30],xmm1
+"NieRAutomata.exe"+7E8A23: 0F 28 42 E0                 -  movaps xmm0,[rdx-20]
+"NieRAutomata.exe"+7E8A27: 41 0F 29 40 E0              -  movaps [r8-20],xmm0
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+7E8A2C: 0F 28 4A F0                 -  movaps xmm1,[rdx-10]
+"NieRAutomata.exe"+7E8A30: 41 0F 29 48 F0              -  movaps [r8-10],xmm1
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+7E8A35: 48 FF C8                    -  dec rax
+"NieRAutomata.exe"+7E8A38: 75 A6                       -  jne NieRAutomata.exe+7E89E0
+"NieRAutomata.exe"+7E8A3A: 0F 28 02                    -  movaps xmm0,[rdx]
+"NieRAutomata.exe"+7E8A3D: 41 0F 29 00                 -  movaps [r8],xmm0
+"NieRAutomata.exe"+7E8A41: 0F 28 4A 10                 -  movaps xmm1,[rdx+10]
+"NieRAutomata.exe"+7E8A45: 41 0F 29 48 10              -  movaps [r8+10],xmm1
+"NieRAutomata.exe"+7E8A4A: 0F 28 42 20                 -  movaps xmm0,[rdx+20]
+"NieRAutomata.exe"+7E8A4E: 41 0F 29 40 20              -  movaps [r8+20],xmm0
+"NieRAutomata.exe"+7E8A53: 0F 28 4A 30                 -  movaps xmm1,[rdx+30]
+"NieRAutomata.exe"+7E8A57: 41 0F 29 48 30              -  movaps [r8+30],xmm1
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>109</ID>
+      <Description>"保存游戏时，材料访问"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECT,NieRAutomata.exe,0F 28 4A F0 0F 29 43 E0 0F 29 4B F0 48 FF CE) // should be unique
+alloc(newmem,$1000,"NieRAutomata.exe"+7E44C1)
+
+label(code)
+label(return)
+
+newmem:
+  mov [rdx-10], (int)99
+code:
+  movaps xmm1,[rdx-10]
+  movaps [rbx-20],xmm0
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db 0F 28 4A F0 0F 29 43 E0
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+7E44C1
+
+"NieRAutomata.exe"+7E4499: 0F 28 42 A0                    -  movaps xmm0,[rdx-60]
+"NieRAutomata.exe"+7E449D: 0F 29 4B 90                    -  movaps [rbx-70],xmm1
+"NieRAutomata.exe"+7E44A1: 0F 28 4A B0                    -  movaps xmm1,[rdx-50]
+"NieRAutomata.exe"+7E44A5: 0F 29 43 A0                    -  movaps [rbx-60],xmm0
+"NieRAutomata.exe"+7E44A9: 0F 28 42 C0                    -  movaps xmm0,[rdx-40]
+"NieRAutomata.exe"+7E44AD: 0F 29 4B B0                    -  movaps [rbx-50],xmm1
+"NieRAutomata.exe"+7E44B1: 0F 28 4A D0                    -  movaps xmm1,[rdx-30]
+"NieRAutomata.exe"+7E44B5: 0F 29 43 C0                    -  movaps [rbx-40],xmm0
+"NieRAutomata.exe"+7E44B9: 0F 28 42 E0                    -  movaps xmm0,[rdx-20]
+"NieRAutomata.exe"+7E44BD: 0F 29 4B D0                    -  movaps [rbx-30],xmm1
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+7E44C1: 0F 28 4A F0                    -  movaps xmm1,[rdx-10]
+"NieRAutomata.exe"+7E44C5: 0F 29 43 E0                    -  movaps [rbx-20],xmm0
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+7E44C9: 0F 29 4B F0                    -  movaps [rbx-10],xmm1
+"NieRAutomata.exe"+7E44CD: 48 FF CE                       -  dec rsi
+"NieRAutomata.exe"+7E44D0: 75 AE                          -  jne NieRAutomata.exe+7E4480
+"NieRAutomata.exe"+7E44D2: 0F 28 02                       -  movaps xmm0,[rdx]
+"NieRAutomata.exe"+7E44D5: 0F 28 4A 10                    -  movaps xmm1,[rdx+10]
+"NieRAutomata.exe"+7E44D9: 0F 29 03                       -  movaps [rbx],xmm0
+"NieRAutomata.exe"+7E44DC: 0F 28 42 20                    -  movaps xmm0,[rdx+20]
+"NieRAutomata.exe"+7E44E0: 0F 29 4B 10                    -  movaps [rbx+10],xmm1
+"NieRAutomata.exe"+7E44E4: 0F 28 4A 30                    -  movaps xmm1,[rdx+30]
+"NieRAutomata.exe"+7E44E8: 0F 29 43 20                    -  movaps [rbx+20],xmm0
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>110</ID>
+      <Description>"无描述"</Description>
+      <LastState RealAddress="0D90CD90"/>
+      <VariableType>String</VariableType>
+      <Length>16</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>0D90CD90</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>111</ID>
+      <Description>"无描述"</Description>
+      <LastState RealAddress="0D90CDF0"/>
+      <VariableType>String</VariableType>
+      <Length>12</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>0D90CDF0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>112</ID>
+      <Description>"无描述"</Description>
+      <LastState RealAddress="57B28906"/>
+      <VariableType>String</VariableType>
+      <Length>16</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>57B28906</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>113</ID>
+      <Description>"无描述"</Description>
+      <LastState RealAddress="57B28942"/>
+      <VariableType>String</VariableType>
+      <Length>12</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>57B28942</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -496,6 +740,146 @@ dealloc(newmem)
         <Byte>01</Byte>
         <Byte>48</Byte>
         <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>替换了 jg NieRAutomata.exe+5DD019</Description>
+      <AddressString>NieRAutomata.exe+5DCFFE</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>83</Byte>
+        <Byte>78</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>7F</Byte>
+        <Byte>19</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>C7</Byte>
+        <Byte>00</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>消耗材料</Description>
+      <AddressString>NieRAutomata.exe+5DCFF6</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+        <Byte>33</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>01</Byte>
+        <Byte>40</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>78</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>7F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>调用材料函数</Description>
+      <AddressString>NieRAutomata.exe+5DC44D</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>E1</Byte>
+        <Byte>41</Byte>
+        <Byte>8B</Byte>
+        <Byte>D2</Byte>
+      </Before>
+      <Actual>
+        <Byte>E8</Byte>
+        <Byte>7E</Byte>
+        <Byte>0B</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>0F</Byte>
+        <Byte>85</Byte>
+        <Byte>80</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>read 材料时的指令</Description>
+      <AddressString>NieRAutomata.exe+5DD57A</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>A3</Byte>
+        <Byte>C7</Byte>
+        <Byte>72</Byte>
+        <Byte>09</Byte>
+      </Before>
+      <Actual>
+        <Byte>83</Byte>
+        <Byte>79</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>7E</Byte>
+        <Byte>03</Byte>
+        <Byte>41</Byte>
+        <Byte>FF</Byte>
+        <Byte>C2</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>拾取材料时</Description>
+      <AddressString>NieRAutomata.exe+5DD0F5</AddressString>
+      <Before>
+        <Byte>B8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>7B</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>买东西，或拾取材料触发</Description>
+      <AddressString>NieRAutomata.exe+5DD0D5</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+        <Byte>5F</Byte>
+        <Byte>C3</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>13</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
@@ -1624,5 +2008,235 @@ dealloc(newmem)
         <Element Offset="2032" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
       </Elements>
     </Structure>
+    <Structure Name="未命名的结构" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" RLECount="245" DisplayMethod="无符号整数"/>
+        <Element Offset="980" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="988" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1028" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1036" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1052" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1060" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1076" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1084" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1100" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1108" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1124" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1132" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1148" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1156" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1172" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1180" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1196" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1204" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1220" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1228" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1244" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1252" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1268" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1276" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1292" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1300" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1316" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1324" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1340" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1348" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1364" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1372" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1388" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1396" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1412" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1420" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1436" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1444" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1460" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1468" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1484" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1492" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1508" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1516" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1532" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1540" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1556" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1564" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1580" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1588" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1604" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1612" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1628" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1636" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1652" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1660" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1676" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1684" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1700" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1708" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1724" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1732" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1748" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1756" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1772" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1780" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1796" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1804" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1820" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1828" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1844" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1852" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1868" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1876" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1892" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1900" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1916" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1924" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1940" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1948" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1964" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1972" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1988" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1996" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+      </Elements>
+    </Structure>
   </Structures>
+  <Comments>材料的id大概是从: 0x1-0x1c7，0x1-0xFF
+银矿 = 13
+金矿 = 44
+回复药小 = c
+果实 = E
+鹿肉 B
+铁矿 2
+---
+  push ecx
+  push eax
+  push edx
+  mov ecx, 0xe
+  mov edx, 0x14194BF60
+  lea eax, [ecx+ecx*2+0xC159]
+  lea eax, [edx+eax*4+08]
+  mov [eax], 0x63 // 99
+  pop edx
+  pop eax
+  pop ecx
+----
+-- 所有背包
+_start = 1
+_end = 455
+for i=_start,_end do
+    writeInteger(0x14194BF60+(i*3+0xC159)*4+8, 0x63)
+    print(readInteger(0x14194BF60+(i*3+0xC159)*4+8))
+end
+</Comments>
+  <LuaScript>_start = 0
+
+-- 455
+_end = 1000
+for i=_start,_end do
+    local address = 0x14194BF60+(i*3+0xC159)*4+8
+    -- writeInteger(address, 0x63)
+    local num = readInteger(address)
+    if num == 0 then
+      print(num, address)
+    end
+end
+print("end...")
+</LuaScript>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCF70</Address>
+      <Comment>eax &gt; 455
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCF77</Address>
+      <Comment>eax &gt; 255
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCF7E</Address>
+      <Comment>eax == 0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCF85</Address>
+      <Comment>跳
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCFB9</Address>
+      <Comment>rcx == edx 跳
+edx = 270
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCFBF</Address>
+      <Comment>eax &lt; 456 跳
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCFD0</Address>
+      <Comment>材料的 丢弃 使用 访问 函数
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCFD9</Address>
+      <Comment>给出rax赋值了
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCFE9</Address>
+      <Comment>rax在这个函数改变了
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCFF6</Address>
+      <Comment>消耗材料，有符号位
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DCFFA</Address>
+      <Comment>if 材料数量&gt;0 跳
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DD007</Address>
+      <Comment>清空材料代码
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DD01C</Address>
+      <Comment>eax = 99 在这个函数中赋值了
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DD021</Address>
+      <Comment>eax(材料上限) == 99
+if [rbx+08] &lt;= 99
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DD026</Address>
+      <Comment>固定为99
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DD03F</Address>
+      <Comment>函数返回值
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+5DEA00</Address>
+      <Comment>材料上限
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+7EA790</Address>
+      <Comment>ecx &gt;=1c8(456) 跳 
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+7EA798</Address>
+      <Comment>ecx &gt; FF(255) 就跳
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
 </CheatTable>
