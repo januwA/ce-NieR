@@ -4,245 +4,113 @@
     <CheatEntry>
       <ID>45</ID>
       <Description>"金币"</Description>
-      <LastState Value="8999900" RealAddress="14197C4C0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>NieRAutomata.exe+197C4C0</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>43</ID>
-      <Description>"怪物攻击伤害改为0"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>define(address,"NieRAutomata.exe"+1FA423)
-define(bytes,29 BB 68 06 01 00)
-
-[ENABLE]
-assert(address,bytes)
-alloc(newmem,$1000,"NieRAutomata.exe"+1FA423)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  // sub [rbx+00010668],edi
-  // 将受到的伤害直接改为0
-  sub [rbx+00010668],0
-  jmp return
-
-address:
-  jmp newmem
-  nop
-return:
-
-[DISABLE]
-address:
-  db bytes
-  // sub [rbx+00010668],edi
-
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+1FA423
-
-"NieRAutomata.exe"+1FA402: 48 8B 03                       -  mov rax,[rbx]
-"NieRAutomata.exe"+1FA405: 48 8B CB                       -  mov rcx,rbx
-"NieRAutomata.exe"+1FA408: FF 90 50 03 00 00              -  call qword ptr [rax+00000350]
-"NieRAutomata.exe"+1FA40E: 85 C0                          -  test eax,eax
-"NieRAutomata.exe"+1FA410: 74 11                          -  je NieRAutomata.exe+1FA423
-"NieRAutomata.exe"+1FA412: 85 FF                          -  test edi,edi
-"NieRAutomata.exe"+1FA414: 7E 0D                          -  jle NieRAutomata.exe+1FA423
-"NieRAutomata.exe"+1FA416: BA 05 00 00 00                 -  mov edx,00000005
-"NieRAutomata.exe"+1FA41B: 48 8B CB                       -  mov rcx,rbx
-"NieRAutomata.exe"+1FA41E: E8 2D 70 FF FF                 -  call NieRAutomata.exe+1F1450
-// ---------- INJECTING HERE ----------
-"NieRAutomata.exe"+1FA423: 29 BB 68 06 01 00              -  sub [rbx+00010668],edi
-// ---------- DONE INJECTING  ----------
-"NieRAutomata.exe"+1FA429: 8B 83 68 06 01 00              -  mov eax,[rbx+00010668]
-"NieRAutomata.exe"+1FA42F: 41 0F 48 C5                    -  cmovs eax,r13d
-"NieRAutomata.exe"+1FA433: 89 83 68 06 01 00              -  mov [rbx+00010668],eax
-"NieRAutomata.exe"+1FA439: 45 85 FF                       -  test r15d,r15d
-"NieRAutomata.exe"+1FA43C: 75 12                          -  jne NieRAutomata.exe+1FA450
-"NieRAutomata.exe"+1FA43E: 44 39 AB B0 6F 01 00           -  cmp [rbx+00016FB0],r13d
-"NieRAutomata.exe"+1FA445: 75 09                          -  jne NieRAutomata.exe+1FA450
-"NieRAutomata.exe"+1FA447: 83 BB 7C 74 01 00 01           -  cmp dword ptr [rbx+0001747C],01
-"NieRAutomata.exe"+1FA44E: 75 0C                          -  jne NieRAutomata.exe+1FA45C
-"NieRAutomata.exe"+1FA450: 41 3B C5                       -  cmp eax,r13d
-}
-</AssemblerScript>
+      <ID>46</ID>
+      <Description>"经验值(满级99)"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>NieRAutomata.exe+1984670</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>89</ID>
-      <Description>"受到异常伤害改为0 (入侵失败,高处落下,落水)"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>define(address,"NieRAutomata.exe"+1FA5B1)
-define(bytes,29 BB 68 06 01 00)
-
-[ENABLE]
-assert(address,bytes)
-alloc(newmem,$1000,"NieRAutomata.exe"+1FA5B1)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  // sub [rbx+00010668],edi
-  sub [rbx+00010668],0
-  jmp return
-
-address:
-  jmp newmem
-  nop
-return:
-
-[DISABLE]
-address:
-  db bytes
-  // sub [rbx+00010668],edi
-
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+1FA5B1
-
-"NieRAutomata.exe"+1FA58E: 48 8B 01              -  mov rax,[rcx]
-"NieRAutomata.exe"+1FA591: 48 89 6C 24 50        -  mov [rsp+50],rbp
-"NieRAutomata.exe"+1FA596: FF 90 50 03 00 00     -  call qword ptr [rax+00000350]
-"NieRAutomata.exe"+1FA59C: 85 C0                 -  test eax,eax
-"NieRAutomata.exe"+1FA59E: 74 11                 -  je NieRAutomata.exe+1FA5B1
-"NieRAutomata.exe"+1FA5A0: 85 FF                 -  test edi,edi
-"NieRAutomata.exe"+1FA5A2: 7E 0D                 -  jle NieRAutomata.exe+1FA5B1
-"NieRAutomata.exe"+1FA5A4: BA 05 00 00 00        -  mov edx,00000005
-"NieRAutomata.exe"+1FA5A9: 48 8B CB              -  mov rcx,rbx
-"NieRAutomata.exe"+1FA5AC: E8 9F 6E FF FF        -  call NieRAutomata.exe+1F1450
-// ---------- INJECTING HERE ----------
-"NieRAutomata.exe"+1FA5B1: 29 BB 68 06 01 00     -  sub [rbx+00010668],edi
-// ---------- DONE INJECTING  ----------
-"NieRAutomata.exe"+1FA5B7: 8B 83 68 06 01 00     -  mov eax,[rbx+00010668]
-"NieRAutomata.exe"+1FA5BD: BD 00 00 00 00        -  mov ebp,00000000
-"NieRAutomata.exe"+1FA5C2: 0F 48 C5              -  cmovs eax,ebp
-"NieRAutomata.exe"+1FA5C5: 89 83 68 06 01 00     -  mov [rbx+00010668],eax
-"NieRAutomata.exe"+1FA5CB: 85 F6                 -  test esi,esi
-"NieRAutomata.exe"+1FA5CD: 75 11                 -  jne NieRAutomata.exe+1FA5E0
-"NieRAutomata.exe"+1FA5CF: 39 AB B0 6F 01 00     -  cmp [rbx+00016FB0],ebp
-"NieRAutomata.exe"+1FA5D5: 75 09                 -  jne NieRAutomata.exe+1FA5E0
-"NieRAutomata.exe"+1FA5D7: 83 BB 7C 74 01 00 01  -  cmp dword ptr [rbx+0001747C],01
-"NieRAutomata.exe"+1FA5DE: 75 10                 -  jne NieRAutomata.exe+1FA5F0
-}
-</AssemblerScript>
+      <ID>99</ID>
+      <Description>"背包 公式=14194BF60+(材料id*3+C159)*4+8"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <Address/>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>102</ID>
+          <Description>"复杂的机械"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>14194BF60 + C180 * 4+8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>103</ID>
+          <Description>"果实"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>14194BF60 + C183 * 4+8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>106</ID>
+          <Description>"铜矿"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>14194BF60 + C189 * 4+8</Address>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>96</ID>
-      <Description>"[9S]进入入侵后无敌"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>define(address,"NieRAutomata.exe"+20DB0A)
-define(bytes,FF 89 DC 28 01 00)
-
-[ENABLE]
-assert(address,bytes)
-alloc(newmem,$1000,"NieRAutomata.exe"+20DB0A)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  // dec [rcx+000128DC]
-  // 变身后只有3滴血，受到攻击 血--，删除这部分逻辑
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  jmp return
-
-address:
-  jmp newmem
-  nop
-return:
-
-[DISABLE]
-address:
-  db bytes
-  // dec [rcx+000128DC]
-
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+20DB0A
-
-"NieRAutomata.exe"+20DADE: 48 33 C4                       -  xor rax,rsp
-"NieRAutomata.exe"+20DAE1: 48 89 85 80 00 00 00           -  mov [rbp+00000080],rax
-"NieRAutomata.exe"+20DAE8: 33 F6                          -  xor esi,esi
-"NieRAutomata.exe"+20DAEA: F7 05 A0 80 20 01 00 80 00 00  -  test [NieRAutomata.exe+1415B94],00008000
-"NieRAutomata.exe"+20DAF4: 48 8B D9                       -  mov rbx,rcx
-"NieRAutomata.exe"+20DAF7: 75 35                          -  jne NieRAutomata.exe+20DB2E
-"NieRAutomata.exe"+20DAF9: 83 3D A0 7B 77 01 03           -  cmp dword ptr [NieRAutomata.exe+19856A0],03
-"NieRAutomata.exe"+20DB00: 75 08                          -  jne NieRAutomata.exe+20DB0A
-"NieRAutomata.exe"+20DB02: 89 B1 DC 28 01 00              -  mov [rcx+000128DC],esi
-"NieRAutomata.exe"+20DB08: EB 06                          -  jmp NieRAutomata.exe+20DB10
-// ---------- INJECTING HERE ----------
-"NieRAutomata.exe"+20DB0A: FF 89 DC 28 01 00              -  dec [rcx+000128DC]
-// ---------- DONE INJECTING  ----------
-"NieRAutomata.exe"+20DB10: 48 8B 01                       -  mov rax,[rcx]
-"NieRAutomata.exe"+20DB13: 48 8D 15 FE CF C4 00           -  lea rdx,[NieRAutomata.exe+E5AB18]
-"NieRAutomata.exe"+20DB1A: 45 33 C9                       -  xor r9d,r9d
-"NieRAutomata.exe"+20DB1D: 4C 8B C1                       -  mov r8,rcx
-"NieRAutomata.exe"+20DB20: 89 74 24 28                    -  mov [rsp+28],esi
-"NieRAutomata.exe"+20DB24: 89 74 24 20                    -  mov [rsp+20],esi
-"NieRAutomata.exe"+20DB28: FF 90 40 01 00 00              -  call qword ptr [rax+00000140]
-"NieRAutomata.exe"+20DB2E: 8B 83 C0 28 01 00              -  mov eax,[rbx+000128C0]
-"NieRAutomata.exe"+20DB34: 85 C0                          -  test eax,eax
-"NieRAutomata.exe"+20DB36: 74 3C                          -  je NieRAutomata.exe+20DB74
-}
-</AssemblerScript>
+      <ID>122</ID>
+      <Description>"hp"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <Address/>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>94</ID>
+          <Description>"hp"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"NieRAutomata.exe"+017C0530</Address>
+          <Offsets>
+            <Offset>638</Offset>
+            <Offset>90</Offset>
+            <Offset>248</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>97</ID>
+          <Description>"hpMax"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"NieRAutomata.exe"+017C0530</Address>
+          <Offsets>
+            <Offset>-f7d4</Offset>
+            <Offset>90</Offset>
+            <Offset>248</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>84</ID>
-      <Description>"修改攻击力"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>define(address,"NieRAutomata.exe"+1FE372)
-define(bytes,89 88 1C 3B 00 00)
+      <ID>186</ID>
+      <Description>"攻击力"</Description>
+      <Options moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>127</ID>
+          <Description>"普通攻击"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(attackPower,NieRAutomata.exe,89 88 1C 3B 00 00)
+registersymbol(attackPower)
 
-[ENABLE]
-assert(address,bytes)
 alloc(newmem,$1000,"NieRAutomata.exe"+1FE372)
 
-label(code)
 label(return)
 
-label(intAttackPower)
-registerSymbol(intAttackPower)
-
 newmem:
-  align 10 CC
-
-code:
   // mov [rax+00003B1C],ecx
-  mov [rax+00003B1C],intAttackPower
+  mov [rax+00003B1C],(int)2000000
   jmp return
 
-intAttackPower:
-  dd (int)100000
-
-address:
+attackPower:
   jmp newmem
   nop
 return:
 
-[DISABLE]
-address:
-  db bytes
-  // mov [rax+00003B1C],ecx
 
+[DISABLE]
+
+attackPower:
+  db 89 88 1C 3B 00 00
+unregistersymbol(attackPower)
 dealloc(newmem)
 
 {
@@ -273,151 +141,609 @@ dealloc(newmem)
 "NieRAutomata.exe"+1FE391: FF C9                       -  dec ecx
 }
 </AssemblerScript>
-      <CheatEntries>
+        </CheatEntry>
         <CheatEntry>
-          <ID>85</ID>
-          <Description>"可修改的攻击力"</Description>
+          <ID>185</ID>
+          <Description>"射击攻击"</Description>
+          <Color>000000</Color>
           <VariableType>4 Bytes</VariableType>
-          <Address>intAttackPower</Address>
+          <Address>NieRAutomata.exe+1418D5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>192</ID>
+          <Description>"普通攻击力2"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(gjlINJECT,NieRAutomata.exe,89 88 1C 3B 00 00)
+alloc(newmem,$1000,"NieRAutomata.exe"+1FE372)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  // mov [rax+00003B1C],ecx
+  mov [rax+00003B1C],(int)9999999
+  jmp return
+
+gjlINJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(gjlINJECT)
+
+[DISABLE]
+
+gjlINJECT:
+  db 89 88 1C 3B 00 00
+
+unregistersymbol(gjlINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+1FE372
+
+"NieRAutomata.exe"+1FE341: 48 63 F0                    -  movsxd  rsi,eax
+"NieRAutomata.exe"+1FE344: 48 6B F6 1C                 -  imul rsi,rsi,1C
+"NieRAutomata.exe"+1FE348: 0F 1F 84 00 00 00 00 00     -  nop dword ptr [rax+rax+00000000]
+"NieRAutomata.exe"+1FE350: 8B 03                       -  mov eax,[rbx]
+"NieRAutomata.exe"+1FE352: 48 8D 8C 24 F0 00 00 00     -  lea rcx,[rsp+000000F0]
+"NieRAutomata.exe"+1FE35A: 89 84 24 F0 00 00 00        -  mov [rsp+000000F0],eax
+"NieRAutomata.exe"+1FE361: E8 BA 51 07 00              -  call NieRAutomata.exe+273520
+"NieRAutomata.exe"+1FE366: 48 85 C0                    -  test rax,rax
+"NieRAutomata.exe"+1FE369: 74 0D                       -  je NieRAutomata.exe+1FE378
+"NieRAutomata.exe"+1FE36B: 8B 8C 2E A0 20 00 00        -  mov ecx,[rsi+rbp+000020A0]
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+1FE372: 89 88 1C 3B 00 00           -  mov [rax+00003B1C],ecx
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+1FE378: 48 83 C3 04                 -  add rbx,04
+"NieRAutomata.exe"+1FE37C: 48 FF CF                    -  dec rdi
+"NieRAutomata.exe"+1FE37F: 75 CF                       -  jne NieRAutomata.exe+1FE350
+"NieRAutomata.exe"+1FE381: 8B BD 20 08 01 00           -  mov edi,[rbp+00010820]
+"NieRAutomata.exe"+1FE387: 8B CF                       -  mov ecx,edi
+"NieRAutomata.exe"+1FE389: 85 FF                       -  test edi,edi
+"NieRAutomata.exe"+1FE38B: 74 14                       -  je NieRAutomata.exe+1FE3A1
+"NieRAutomata.exe"+1FE38D: FF C9                       -  dec ecx
+"NieRAutomata.exe"+1FE38F: 74 09                       -  je NieRAutomata.exe+1FE39A
+"NieRAutomata.exe"+1FE391: FF C9                       -  dec ecx
+}
+</AssemblerScript>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>46</ID>
-      <Description>"经验值(满级99)"</Description>
-      <LastState Value="2217165" RealAddress="141984670"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>NieRAutomata.exe+1984670</Address>
+      <ID>123</ID>
+      <Description>"免疫伤害"</Description>
+      <Options moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <Address/>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>124</ID>
+          <Description>"怪物伤害"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(hurt,NieRAutomata.exe,29 BB 68 06 01 00 8B 83 * * * * 41) // 扫描指定模块的内存
+registersymbol(hurt) // 定义符号
+
+alloc(newmem,$1000,"NieRAutomata.exe"+1FA423) // 分配内存
+
+label(return)
+
+newmem:
+  // sub [rbx+00010668],edi
+  jmp return
+
+hurt:
+  jmp newmem
+  nop
+return:
+
+
+[DISABLE]
+
+hurt:
+  db 29 BB 68 06 01 00
+
+unregistersymbol(hurt) // 清理符号
+dealloc(newmem) // 清理内存
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+1FA423
+
+"NieRAutomata.exe"+1FA402: 48 8B 03                       -  mov rax,[rbx]
+"NieRAutomata.exe"+1FA405: 48 8B CB                       -  mov rcx,rbx
+"NieRAutomata.exe"+1FA408: FF 90 50 03 00 00              -  call qword ptr [rax+00000350]
+"NieRAutomata.exe"+1FA40E: 85 C0                          -  test eax,eax
+"NieRAutomata.exe"+1FA410: 74 11                          -  je NieRAutomata.exe+1FA423
+"NieRAutomata.exe"+1FA412: 85 FF                          -  test edi,edi
+"NieRAutomata.exe"+1FA414: 7E 0D                          -  jle NieRAutomata.exe+1FA423
+"NieRAutomata.exe"+1FA416: BA 05 00 00 00                 -  mov edx,00000005
+"NieRAutomata.exe"+1FA41B: 48 8B CB                       -  mov rcx,rbx
+"NieRAutomata.exe"+1FA41E: E8 2D 70 FF FF                 -  call NieRAutomata.exe+1F1450
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+1FA423: 29 BB 68 06 01 00              -  sub [rbx+00010668],edi
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+1FA429: 8B 83 68 06 01 00              -  mov eax,[rbx+00010668]
+"NieRAutomata.exe"+1FA42F: 41 0F 48 C5                    -  cmovs eax,r13d
+"NieRAutomata.exe"+1FA433: 89 83 68 06 01 00              -  mov [rbx+00010668],eax
+"NieRAutomata.exe"+1FA439: 45 85 FF                       -  test r15d,r15d
+"NieRAutomata.exe"+1FA43C: 75 12                          -  jne NieRAutomata.exe+1FA450
+"NieRAutomata.exe"+1FA43E: 44 39 AB B0 6F 01 00           -  cmp [rbx+00016FB0],r13d
+"NieRAutomata.exe"+1FA445: 75 09                          -  jne NieRAutomata.exe+1FA450
+"NieRAutomata.exe"+1FA447: 83 BB 7C 74 01 00 01           -  cmp dword ptr [rbx+0001747C],01
+"NieRAutomata.exe"+1FA44E: 75 0C                          -  jne NieRAutomata.exe+1FA45C
+"NieRAutomata.exe"+1FA450: 41 3B C5                       -  cmp eax,r13d
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>125</ID>
+          <Description>"异常伤害 (入侵失败,高处落下,落水)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(abnormalDamage,NieRAutomata.exe,29 BB 68 06 01 00)
+registersymbol(abnormalDamage)
+
+alloc(newmem,$1000,"NieRAutomata.exe"+1FA5B1)
+
+label(return)
+
+newmem:
+  // sub [rbx+00010668],edi
+  jmp return
+
+abnormalDamage:
+  jmp newmem
+  nop
+return:
+
+
+[DISABLE]
+
+abnormalDamage:
+  db 29 BB 68 06 01 00
+
+unregistersymbol(abnormalDamage)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+1FA5B1
+
+"NieRAutomata.exe"+1FA58E: 48 8B 01              -  mov rax,[rcx]
+"NieRAutomata.exe"+1FA591: 48 89 6C 24 50        -  mov [rsp+50],rbp
+"NieRAutomata.exe"+1FA596: FF 90 50 03 00 00     -  call qword ptr [rax+00000350]
+"NieRAutomata.exe"+1FA59C: 85 C0                 -  test eax,eax
+"NieRAutomata.exe"+1FA59E: 74 11                 -  je NieRAutomata.exe+1FA5B1
+"NieRAutomata.exe"+1FA5A0: 85 FF                 -  test edi,edi
+"NieRAutomata.exe"+1FA5A2: 7E 0D                 -  jle NieRAutomata.exe+1FA5B1
+"NieRAutomata.exe"+1FA5A4: BA 05 00 00 00        -  mov edx,00000005
+"NieRAutomata.exe"+1FA5A9: 48 8B CB              -  mov rcx,rbx
+"NieRAutomata.exe"+1FA5AC: E8 9F 6E FF FF        -  call NieRAutomata.exe+1F1450
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+1FA5B1: 29 BB 68 06 01 00     -  sub [rbx+00010668],edi
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+1FA5B7: 8B 83 68 06 01 00     -  mov eax,[rbx+00010668]
+"NieRAutomata.exe"+1FA5BD: BD 00 00 00 00        -  mov ebp,00000000
+"NieRAutomata.exe"+1FA5C2: 0F 48 C5              -  cmovs eax,ebp
+"NieRAutomata.exe"+1FA5C5: 89 83 68 06 01 00     -  mov [rbx+00010668],eax
+"NieRAutomata.exe"+1FA5CB: 85 F6                 -  test esi,esi
+"NieRAutomata.exe"+1FA5CD: 75 11                 -  jne NieRAutomata.exe+1FA5E0
+"NieRAutomata.exe"+1FA5CF: 39 AB B0 6F 01 00     -  cmp [rbx+00016FB0],ebp
+"NieRAutomata.exe"+1FA5D5: 75 09                 -  jne NieRAutomata.exe+1FA5E0
+"NieRAutomata.exe"+1FA5D7: 83 BB 7C 74 01 00 01  -  cmp dword ptr [rbx+0001747C],01
+"NieRAutomata.exe"+1FA5DE: 75 10                 -  jne NieRAutomata.exe+1FA5F0
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>126</ID>
+          <Description>"入侵怪物伤害"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(invasionDamage,NieRAutomata.exe,B1 * * * * EB 06 FF 89 DC 28 01 00)
+registersymbol(invasionDamage)
+
+alloc(newmem,$1000,"NieRAutomata.exe"+20DB0A)
+
+label(return)
+
+newmem:
+  // 字节单位
+  // dec [rcx+000128DC]
+  jmp return
+
+invasionDamage+07:
+  jmp newmem
+  nop
+return:
+
+
+[DISABLE]
+invasionDamage+07:
+  db FF 89 DC 28 01 00
+
+unregistersymbol(invasionDamage)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+20DB0A
+
+"NieRAutomata.exe"+20DADE: 48 33 C4                       -  xor rax,rsp
+"NieRAutomata.exe"+20DAE1: 48 89 85 80 00 00 00           -  mov [rbp+00000080],rax
+"NieRAutomata.exe"+20DAE8: 33 F6                          -  xor esi,esi
+"NieRAutomata.exe"+20DAEA: F7 05 A0 80 20 01 00 80 00 00  -  test [NieRAutomata.exe+1415B94],00008000
+"NieRAutomata.exe"+20DAF4: 48 8B D9                       -  mov rbx,rcx
+"NieRAutomata.exe"+20DAF7: 75 35                          -  jne NieRAutomata.exe+20DB2E
+"NieRAutomata.exe"+20DAF9: 83 3D A0 7B 77 01 03           -  cmp dword ptr [NieRAutomata.exe+19856A0],03
+"NieRAutomata.exe"+20DB00: 75 08                          -  jne NieRAutomata.exe+20DB0A
+"NieRAutomata.exe"+20DB02: 89 B1 DC 28 01 00              -  mov [rcx+000128DC],esi
+"NieRAutomata.exe"+20DB08: EB 06                          -  jmp NieRAutomata.exe+20DB10
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+20DB0A: FF 89 DC 28 01 00              -  dec [rcx+000128DC]
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+20DB10: 48 8B 01                       -  mov rax,[rcx]
+"NieRAutomata.exe"+20DB13: 48 8D 15 FE CF C4 00           -  lea rdx,[NieRAutomata.exe+E5AB18]
+"NieRAutomata.exe"+20DB1A: 45 33 C9                       -  xor r9d,r9d
+"NieRAutomata.exe"+20DB1D: 4C 8B C1                       -  mov r8,rcx
+"NieRAutomata.exe"+20DB20: 89 74 24 28                    -  mov [rsp+28],esi
+"NieRAutomata.exe"+20DB24: 89 74 24 20                    -  mov [rsp+20],esi
+"NieRAutomata.exe"+20DB28: FF 90 40 01 00 00              -  call qword ptr [rax+00000140]
+"NieRAutomata.exe"+20DB2E: 8B 83 C0 28 01 00              -  mov eax,[rbx+000128C0]
+"NieRAutomata.exe"+20DB34: 85 C0                          -  test eax,eax
+"NieRAutomata.exe"+20DB36: 74 3C                          -  je NieRAutomata.exe+20DB74
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>94</ID>
-      <Description>"hp"</Description>
-      <LastState Value="9057" RealAddress="0F60E3C8"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"NieRAutomata.exe"+017C0530</Address>
-      <Offsets>
-        <Offset>638</Offset>
-        <Offset>90</Offset>
-        <Offset>248</Offset>
-        <Offset>18</Offset>
-      </Offsets>
+      <ID>195</ID>
+      <Description>"A2"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <Address/>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>194</ID>
+          <Description>"暴走加血"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>// 开启暴走加hp
+
+[ENABLE]
+aobscanmodule(a2_B_add,NieRAutomata.exe,29 8B 68 06 01 00)
+alloc(newmem,$1000,"NieRAutomata.exe"+213B9E)
+
+
+label(return)
+
+newmem:
+  // sub [rbx+00010668],ecx
+  add [rbx+00010668],ecx
+  jmp return
+
+a2_B_add:
+  jmp newmem
+  nop
+return:
+registersymbol(a2_B_add)
+
+[DISABLE]
+
+a2_B_add:
+  db 29 8B 68 06 01 00
+
+unregistersymbol(a2_B_add)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+213B9E
+
+"NieRAutomata.exe"+213B6B: 39 BB C8 0B 00 00              -  cmp [rbx+00000BC8],edi
+"NieRAutomata.exe"+213B71: 0F 85 D1 01 00 00              -  jne NieRAutomata.exe+213D48
+"NieRAutomata.exe"+213B77: 48 8B 03                       -  mov rax,[rbx]
+"NieRAutomata.exe"+213B7A: 48 8B CB                       -  mov rcx,rbx
+"NieRAutomata.exe"+213B7D: FF 90 F0 00 00 00              -  call qword ptr [rax+000000F0]
+"NieRAutomata.exe"+213B83: 66 0F 6E C0                    -  movd xmm0,eax
+"NieRAutomata.exe"+213B87: 0F 5B C0                       -  cvtdq2ps xmm0,xmm0
+"NieRAutomata.exe"+213B8A: F3 0F 59 05 CA 47 C9 00        -  mulss xmm0,[NieRAutomata.exe+EA835C]
+"NieRAutomata.exe"+213B92: F3 0F 58 05 D6 49 C9 00        -  addss xmm0,[NieRAutomata.exe+EA8570]
+"NieRAutomata.exe"+213B9A: F3 0F 2C C8                    -  cvttss2si ecx,xmm0
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+213B9E: 29 8B 68 06 01 00              -  sub [rbx+00010668],ecx
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+213BA4: 39 3D 82 CC 26 01              -  cmp [NieRAutomata.exe+148082C],edi
+"NieRAutomata.exe"+213BAA: 74 12                          -  je NieRAutomata.exe+213BBE
+"NieRAutomata.exe"+213BAC: 48 8B 05 35 9D 6F 01           -  mov rax,[NieRAutomata.exe+190D8E8]
+"NieRAutomata.exe"+213BB3: 48 85 C0                       -  test rax,rax
+"NieRAutomata.exe"+213BB6: 74 06                          -  je NieRAutomata.exe+213BBE
+"NieRAutomata.exe"+213BB8: 89 88 C0 00 00 00              -  mov [rax+000000C0],ecx
+"NieRAutomata.exe"+213BBE: 8B 83 68 06 01 00              -  mov eax,[rbx+00010668]
+"NieRAutomata.exe"+213BC4: 89 83 58 08 00 00              -  mov [rbx+00000858],eax
+"NieRAutomata.exe"+213BCA: 83 F8 01                       -  cmp eax,01
+"NieRAutomata.exe"+213BCD: 0F 8F 75 01 00 00              -  jg NieRAutomata.exe+213D48
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>193</ID>
+          <Description>"关闭暴走屏幕抖动"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>// 暴走ui抖动
+
+[ENABLE]
+aobscanmodule(a2_B_ui,NieRAutomata.exe,0F 87 F3 01 00 00 C7)
+alloc(newmem,$1000,"NieRAutomata.exe"+213B4F)
+
+label(return)
+
+newmem:
+  // ja NieRAutomata.exe+213D48
+  jmp return
+
+a2_B_ui:
+  jmp newmem
+  nop
+return:
+registersymbol(a2_B_ui)
+
+[DISABLE]
+
+a2_B_ui:
+  db 0F 87 F3 01 00 00
+
+unregistersymbol(a2_B_ui)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+213B4F
+
+"NieRAutomata.exe"+213B15: F3 0F 11 83 A4 2A 01 00        -  movss [rbx+00012AA4],xmm0
+"NieRAutomata.exe"+213B1D: EB 06                          -  jmp NieRAutomata.exe+213B25
+"NieRAutomata.exe"+213B1F: 89 BB A4 2A 01 00              -  mov [rbx+00012AA4],edi
+"NieRAutomata.exe"+213B25: 0F 57 F6                       -  xorps xmm6,xmm6
+"NieRAutomata.exe"+213B28: 39 BB B4 2A 01 00              -  cmp [rbx+00012AB4],edi
+"NieRAutomata.exe"+213B2E: 0F 84 14 02 00 00              -  je NieRAutomata.exe+213D48
+"NieRAutomata.exe"+213B34: F3 0F 10 83 B8 2A 01 00        -  movss xmm0,[rbx+00012AB8]
+"NieRAutomata.exe"+213B3C: F3 0F 5C 83 70 14 00 00        -  subss xmm0,[rbx+00001470]
+"NieRAutomata.exe"+213B44: 0F 2F C6                       -  comiss xmm0,xmm6
+"NieRAutomata.exe"+213B47: F3 0F 11 83 B8 2A 01 00        -  movss [rbx+00012AB8],xmm0
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+213B4F: 0F 87 F3 01 00 00              -  ja NieRAutomata.exe+213D48
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+213B55: C7 83 B8 2A 01 00 00 00 20 41  -  mov [rbx+00012AB8],41200000
+"NieRAutomata.exe"+213B5F: 39 BB C4 0B 00 00              -  cmp [rbx+00000BC4],edi
+"NieRAutomata.exe"+213B65: 0F 85 DD 01 00 00              -  jne NieRAutomata.exe+213D48
+"NieRAutomata.exe"+213B6B: 39 BB C8 0B 00 00              -  cmp [rbx+00000BC8],edi
+"NieRAutomata.exe"+213B71: 0F 85 D1 01 00 00              -  jne NieRAutomata.exe+213D48
+"NieRAutomata.exe"+213B77: 48 8B 03                       -  mov rax,[rbx]
+"NieRAutomata.exe"+213B7A: 48 8B CB                       -  mov rcx,rbx
+"NieRAutomata.exe"+213B7D: FF 90 F0 00 00 00              -  call qword ptr [rax+000000F0]
+"NieRAutomata.exe"+213B83: 66 0F 6E C0                    -  movd xmm0,eax
+"NieRAutomata.exe"+213B87: 0F 5B C0                       -  cvtdq2ps xmm0,xmm0
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>97</ID>
-      <Description>"血上限"</Description>
-      <LastState Value="9057" RealAddress="0F5FE5BC"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"NieRAutomata.exe"+017C0530</Address>
-      <Offsets>
-        <Offset>-f7d4</Offset>
-        <Offset>90</Offset>
-        <Offset>248</Offset>
-        <Offset>18</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>99</ID>
-      <Description>"背包 公式=14194BF60+(材料id*3+C159)*4+8"</Description>
+      <ID>204</ID>
+      <Description>"入侵小游戏"</Description>
       <Options moManualExpandCollapse="1"/>
       <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <Address/>
       <CheatEntries>
         <CheatEntry>
-          <ID>102</ID>
-          <Description>"复杂的机械"</Description>
-          <LastState Value="55" RealAddress="14197C568"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>14194BF60 + C180 * 4+8</Address>
+          <ID>203</ID>
+          <Description>"攻击秒杀"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(rqmsINJECT,NieRAutomata.exe,41 8B 46 20 29 87 78 35 00 00) // should be unique
+alloc(newmem,$1000,"NieRAutomata.exe"+3276AB)
+
+label(return)
+
+newmem:
+  // mov eax,[r14+20]
+  mov eax,[rdi+00003578]
+  sub [rdi+00003578],eax
+  jmp return
+
+rqmsINJECT:
+  jmp newmem
+  nop 5
+return:
+registersymbol(rqmsINJECT)
+
+[DISABLE]
+rqmsINJECT:
+  db 41 8B 46 20 29 87 78 35 00 00
+
+unregistersymbol(rqmsINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+3276AB
+
+"NieRAutomata.exe"+32767B: 41 83 7E 04 64                 -  cmp dword ptr [r14+04],64
+"NieRAutomata.exe"+327680: 0F 85 71 FF FF FF              -  jne NieRAutomata.exe+3275F7
+"NieRAutomata.exe"+327686: 44 39 A7 7C 35 00 00           -  cmp [rdi+0000357C],r12d
+"NieRAutomata.exe"+32768D: 74 0C                          -  je NieRAutomata.exe+32769B
+"NieRAutomata.exe"+32768F: F7 05 FF E4 0E 01 00 00 00 80  -  test [NieRAutomata.exe+1415B98],80000000
+"NieRAutomata.exe"+327699: 75 26                          -  jne NieRAutomata.exe+3276C1
+"NieRAutomata.exe"+32769B: 81 FA 28 00 04 00              -  cmp edx,00040028
+"NieRAutomata.exe"+3276A1: 75 08                          -  jne NieRAutomata.exe+3276AB
+"NieRAutomata.exe"+3276A3: FF 8F 78 35 00 00              -  dec [rdi+00003578]
+"NieRAutomata.exe"+3276A9: EB 0A                          -  jmp NieRAutomata.exe+3276B5
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+3276AB: 41 8B 46 20                    -  mov eax,[r14+20]
+"NieRAutomata.exe"+3276AF: 29 87 78 35 00 00              -  sub [rdi+00003578],eax
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+3276B5: 8B 87 78 35 00 00              -  mov eax,[rdi+00003578]
+"NieRAutomata.exe"+3276BB: 89 87 58 08 00 00              -  mov [rdi+00000858],eax
+"NieRAutomata.exe"+3276C1: 44 39 A7 78 35 00 00           -  cmp [rdi+00003578],r12d
+"NieRAutomata.exe"+3276C8: 7F 15                          -  jg NieRAutomata.exe+3276DF
+"NieRAutomata.exe"+3276CA: 48 8B CF                       -  mov rcx,rdi
+"NieRAutomata.exe"+3276CD: E8 EE 12 00 00                 -  call NieRAutomata.exe+3289C0
+"NieRAutomata.exe"+3276D2: 85 DB                          -  test ebx,ebx
+"NieRAutomata.exe"+3276D4: 0F 85 95 01 00 00              -  jne NieRAutomata.exe+32786F
+"NieRAutomata.exe"+3276DA: E9 6C 01 00 00                 -  jmp NieRAutomata.exe+32784B
+"NieRAutomata.exe"+3276DF: 85 DB                          -  test ebx,ebx
+}
+</AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>103</ID>
-          <Description>"果实"</Description>
-          <LastState Value="99" RealAddress="14197C574"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>14194BF60 + C183 * 4+8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>106</ID>
-          <Description>"铜矿"</Description>
-          <LastState Value="99" RealAddress="14197C58C"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>14194BF60 + C189 * 4+8</Address>
+          <ID>201</ID>
+          <Description>"自动秒杀，出了小游戏手动关掉"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>// 入侵直接秒杀敌人
+[ENABLE]
+aobscanmodule(SpikeIntrusion,NieRAutomata.exe,8B 81 58 08 00 00 C3)
+alloc(newmem,$1000,"NieRAutomata.exe"+146B30)
+
+label(return)
+
+newmem:
+  mov eax,0
+  jmp return
+
+SpikeIntrusion:
+  jmp newmem
+  nop
+return:
+registersymbol(SpikeIntrusion)
+
+[DISABLE]
+SpikeIntrusion:
+  db 8B 81 58 08 00 00
+
+unregistersymbol(SpikeIntrusion)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+146B30
+
+"NieRAutomata.exe"+146B26: C3                    -  ret 
+"NieRAutomata.exe"+146B27: CC                    -  int 3 
+"NieRAutomata.exe"+146B28: CC                    -  int 3 
+"NieRAutomata.exe"+146B29: CC                    -  int 3 
+"NieRAutomata.exe"+146B2A: CC                    -  int 3 
+"NieRAutomata.exe"+146B2B: CC                    -  int 3 
+"NieRAutomata.exe"+146B2C: CC                    -  int 3 
+"NieRAutomata.exe"+146B2D: CC                    -  int 3 
+"NieRAutomata.exe"+146B2E: CC                    -  int 3 
+"NieRAutomata.exe"+146B2F: CC                    -  int 3 
+// ---------- INJECTING HERE ----------
+"NieRAutomata.exe"+146B30: 8B 81 58 08 00 00     -  mov eax,[rcx+00000858]
+// ---------- DONE INJECTING  ----------
+"NieRAutomata.exe"+146B36: C3                    -  ret 
+"NieRAutomata.exe"+146B37: CC                    -  int 3 
+"NieRAutomata.exe"+146B38: CC                    -  int 3 
+"NieRAutomata.exe"+146B39: CC                    -  int 3 
+"NieRAutomata.exe"+146B3A: CC                    -  int 3 
+"NieRAutomata.exe"+146B3B: CC                    -  int 3 
+"NieRAutomata.exe"+146B3C: CC                    -  int 3 
+"NieRAutomata.exe"+146B3D: CC                    -  int 3 
+"NieRAutomata.exe"+146B3E: CC                    -  int 3 
+"NieRAutomata.exe"+146B3F: CC                    -  int 3 
+}
+</AssemblerScript>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>104</ID>
-      <Description>"材料变化，将改为99"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>define(address,"NieRAutomata.exe"+5DCFF6)
-define(bytes,44 01 40 08 83 78 08 00)
-
+      <ID>205</ID>
+      <Description>"材料"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <Address/>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>107</ID>
+          <Description>"材料变化(99)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>// 打开背包，将已存在的材料刷为99
 [ENABLE]
-assert(address,bytes)
-alloc(newmem,$1000,"NieRAutomata.exe"+5DCFF6)
+aobscanmodule(prop,NieRAutomata.exe,83 79 08 00 7E 03)
+alloc(newmem,$1000,"NieRAutomata.exe"+5DD57A)
 
 label(code)
 label(return)
 
 newmem:
-  mov r8d,0x63
+  cmp [rcx+08], (int)99
+  jae code
+  mov [rcx+08], (int)99
 code:
-  add [rax+08],r8d
-  cmp dword ptr [rax+08],00
+  cmp dword ptr [rcx+08],00
+  jle NieRAutomata.exe+5DD583
   jmp return
 
-address:
+prop:
   jmp newmem
-  nop 3
+  nop
 return:
+registersymbol(prop)
 
 [DISABLE]
-//code from here till the end of the code will be used to disable the cheat
-address:
-  db bytes
-  // add [rax+08],r8d
-  // cmp dword ptr [rax+08],00
+prop:
+  db 83 79 08 00 7E 03
 
+unregistersymbol(prop)
 dealloc(newmem)
 
 {
-// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+5DCFF6
+// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+5DD57A
 
-"NieRAutomata.exe"+5DCFD9: E8 82 FF FF FF        -  call NieRAutomata.exe+5DCF60
-"NieRAutomata.exe"+5DCFDE: 83 F8 FF              -  cmp eax,-01
-"NieRAutomata.exe"+5DCFE1: 74 4E                 -  je NieRAutomata.exe+5DD031
-"NieRAutomata.exe"+5DCFE3: 85 C0                 -  test eax,eax
-"NieRAutomata.exe"+5DCFE5: 78 42                 -  js NieRAutomata.exe+5DD029
-"NieRAutomata.exe"+5DCFE7: 8B C8                 -  mov ecx,eax
-"NieRAutomata.exe"+5DCFE9: E8 A2 D7 20 00        -  call NieRAutomata.exe+7EA790
-"NieRAutomata.exe"+5DCFEE: 48 8B D8              -  mov rbx,rax
-"NieRAutomata.exe"+5DCFF1: 48 85 C0              -  test rax,rax
-"NieRAutomata.exe"+5DCFF4: 74 33                 -  je NieRAutomata.exe+5DD029
+"NieRAutomata.exe"+5DD55B: 77 06                             -  ja NieRAutomata.exe+5DD563
+"NieRAutomata.exe"+5DD55D: 44 0F A3 C3                       -  bt ebx,r8d
+"NieRAutomata.exe"+5DD561: 72 20                             -  jb NieRAutomata.exe+5DD583
+"NieRAutomata.exe"+5DD563: 3D 9A 01 00 00                    -  cmp eax,0000019A
+"NieRAutomata.exe"+5DD568: 74 19                             -  je NieRAutomata.exe+5DD583
+"NieRAutomata.exe"+5DD56A: 05 59 FC FF FF                    -  add eax,FFFFFC59
+"NieRAutomata.exe"+5DD56F: 83 F8 3B                          -  cmp eax,3B
+"NieRAutomata.exe"+5DD572: 77 06                             -  ja NieRAutomata.exe+5DD57A
+"NieRAutomata.exe"+5DD574: 48 0F A3 C7                       -  bt rdi,rax
+"NieRAutomata.exe"+5DD578: 72 09                             -  jb NieRAutomata.exe+5DD583
 // ---------- INJECTING HERE ----------
-"NieRAutomata.exe"+5DCFF6: 44 01 40 08           -  add [rax+08],r8d
-"NieRAutomata.exe"+5DCFFA: 83 78 08 00           -  cmp dword ptr [rax+08],00
+"NieRAutomata.exe"+5DD57A: 83 79 08 00                       -  cmp dword ptr [rcx+08],00
+"NieRAutomata.exe"+5DD57E: 7E 03                             -  jle NieRAutomata.exe+5DD583
 // ---------- DONE INJECTING  ----------
-"NieRAutomata.exe"+5DCFFE: 7F 19                 -  jg NieRAutomata.exe+5DD019
-"NieRAutomata.exe"+5DD000: 48 C7 00 FF FF FF FF  -  mov qword ptr [rax],FFFFFFFFFFFFFFFF
-"NieRAutomata.exe"+5DD007: C7 40 08 00 00 00 00  -  mov [rax+08],00000000
-"NieRAutomata.exe"+5DD00E: B8 01 00 00 00        -  mov eax,00000001
-"NieRAutomata.exe"+5DD013: 48 83 C4 20           -  add rsp,20
-"NieRAutomata.exe"+5DD017: 5B                    -  pop rbx
-"NieRAutomata.exe"+5DD018: C3                    -  ret 
-"NieRAutomata.exe"+5DD019: 41 8B D2              -  mov edx,r10d
-"NieRAutomata.exe"+5DD01C: E8 DF 19 00 00        -  call NieRAutomata.exe+5DEA00
-"NieRAutomata.exe"+5DD021: 39 43 08              -  cmp [rbx+08],eax
+"NieRAutomata.exe"+5DD580: 41 FF C2                          -  inc r10d
+"NieRAutomata.exe"+5DD583: FF C2                             -  inc edx
+"NieRAutomata.exe"+5DD585: 49 83 C1 0C                       -  add r9,0C
+"NieRAutomata.exe"+5DD589: 81 FA C8 01 00 00                 -  cmp edx,000001C8
+"NieRAutomata.exe"+5DD58F: 0F 8C 7B FF FF FF                 -  jl NieRAutomata.exe+5DD510
+"NieRAutomata.exe"+5DD595: 48 8B 5C 24 08                    -  mov rbx,[rsp+08]
+"NieRAutomata.exe"+5DD59A: 48 8B 7C 24 10                    -  mov rdi,[rsp+10]
+"NieRAutomata.exe"+5DD59F: 41 8B C2                          -  mov eax,r10d
+"NieRAutomata.exe"+5DD5A2: C3                                -  ret 
+"NieRAutomata.exe"+5DD5A3: CC                                -  int 3 
 }
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>105</ID>
-      <Description>"材料上限"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>define(address,"NieRAutomata.exe"+5DD021)
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105</ID>
+          <Description>"材料上限"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>// 材料上限默认99
+define(address,"NieRAutomata.exe"+5DD021)
 define(bytes,39 43 08 7E 19)
 
 [ENABLE]
@@ -428,7 +754,7 @@ label(code)
 label(return)
 
 newmem:
-  mov eax, 0x63
+  mov eax, (int)99
 code:
   cmp [rbx+08],eax
   jle NieRAutomata.exe+5DD03F
@@ -475,295 +801,11 @@ dealloc(newmem)
 "NieRAutomata.exe"+5DD03D: 74 EA                 -  je NieRAutomata.exe+5DD029
 }
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>107</ID>
-      <Description>"打开道具时，访问材料"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-
-aobscanmodule(INJECT,NieRAutomata.exe,83 79 08 00 7E 03)
-alloc(newmem,$1000,"NieRAutomata.exe"+5DD57A)
-
-label(code)
-label(return)
-
-newmem:
-  cmp [rcx+08], (int)99
-  jae code
-  mov [rcx+08], (int)99 // 在访问的时候直接写入数据
-code:
-  cmp dword ptr [rcx+08],00
-  jle NieRAutomata.exe+5DD583
-  jmp return
-
-INJECT:
-  jmp newmem
-  nop
-return:
-registersymbol(INJECT)
-
-[DISABLE]
-
-INJECT:
-  db 83 79 08 00 7E 03
-
-unregistersymbol(INJECT)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+5DD57A
-
-"NieRAutomata.exe"+5DD55B: 77 06                             -  ja NieRAutomata.exe+5DD563
-"NieRAutomata.exe"+5DD55D: 44 0F A3 C3                       -  bt ebx,r8d
-"NieRAutomata.exe"+5DD561: 72 20                             -  jb NieRAutomata.exe+5DD583
-"NieRAutomata.exe"+5DD563: 3D 9A 01 00 00                    -  cmp eax,0000019A
-"NieRAutomata.exe"+5DD568: 74 19                             -  je NieRAutomata.exe+5DD583
-"NieRAutomata.exe"+5DD56A: 05 59 FC FF FF                    -  add eax,FFFFFC59
-"NieRAutomata.exe"+5DD56F: 83 F8 3B                          -  cmp eax,3B
-"NieRAutomata.exe"+5DD572: 77 06                             -  ja NieRAutomata.exe+5DD57A
-"NieRAutomata.exe"+5DD574: 48 0F A3 C7                       -  bt rdi,rax
-"NieRAutomata.exe"+5DD578: 72 09                             -  jb NieRAutomata.exe+5DD583
-// ---------- INJECTING HERE ----------
-"NieRAutomata.exe"+5DD57A: 83 79 08 00                       -  cmp dword ptr [rcx+08],00
-"NieRAutomata.exe"+5DD57E: 7E 03                             -  jle NieRAutomata.exe+5DD583
-// ---------- DONE INJECTING  ----------
-"NieRAutomata.exe"+5DD580: 41 FF C2                          -  inc r10d
-"NieRAutomata.exe"+5DD583: FF C2                             -  inc edx
-"NieRAutomata.exe"+5DD585: 49 83 C1 0C                       -  add r9,0C
-"NieRAutomata.exe"+5DD589: 81 FA C8 01 00 00                 -  cmp edx,000001C8
-"NieRAutomata.exe"+5DD58F: 0F 8C 7B FF FF FF                 -  jl NieRAutomata.exe+5DD510
-"NieRAutomata.exe"+5DD595: 48 8B 5C 24 08                    -  mov rbx,[rsp+08]
-"NieRAutomata.exe"+5DD59A: 48 8B 7C 24 10                    -  mov rdi,[rsp+10]
-"NieRAutomata.exe"+5DD59F: 41 8B C2                          -  mov eax,r10d
-"NieRAutomata.exe"+5DD5A2: C3                                -  ret 
-"NieRAutomata.exe"+5DD5A3: CC                                -  int 3 
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>108</ID>
-      <Description>"进入游戏时，材料访问)无效"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT,NieRAutomata.exe,0F 28 4A F0 41 0F 29 48 F0)
-alloc(newmem,$1000,"NieRAutomata.exe"+7E8A2C)
-
-label(code)
-label(return)
-
-newmem:
-  cmp [rdx-10], (int)99
-  jae code
-  mov [rdx-10], (int)99
-code:
-  movaps xmm1,[rdx-10]
-  movaps [r8-10],xmm1
-  jmp return
-
-INJECT:
-  jmp newmem
-  nop 4
-return:
-registersymbol(INJECT)
-
-[DISABLE]
-INJECT:
-  db 0F 28 4A F0 41 0F 29 48 F0
-
-unregistersymbol(INJECT)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+7E8A2C
-
-"NieRAutomata.exe"+7E89FF: 0F 28 42 A0                 -  movaps xmm0,[rdx-60]
-"NieRAutomata.exe"+7E8A03: 41 0F 29 40 A0              -  movaps [r8-60],xmm0
-"NieRAutomata.exe"+7E8A08: 0F 28 4A B0                 -  movaps xmm1,[rdx-50]
-"NieRAutomata.exe"+7E8A0C: 41 0F 29 48 B0              -  movaps [r8-50],xmm1
-"NieRAutomata.exe"+7E8A11: 0F 28 42 C0                 -  movaps xmm0,[rdx-40]
-"NieRAutomata.exe"+7E8A15: 41 0F 29 40 C0              -  movaps [r8-40],xmm0
-"NieRAutomata.exe"+7E8A1A: 0F 28 4A D0                 -  movaps xmm1,[rdx-30]
-"NieRAutomata.exe"+7E8A1E: 41 0F 29 48 D0              -  movaps [r8-30],xmm1
-"NieRAutomata.exe"+7E8A23: 0F 28 42 E0                 -  movaps xmm0,[rdx-20]
-"NieRAutomata.exe"+7E8A27: 41 0F 29 40 E0              -  movaps [r8-20],xmm0
-// ---------- INJECTING HERE ----------
-"NieRAutomata.exe"+7E8A2C: 0F 28 4A F0                 -  movaps xmm1,[rdx-10]
-"NieRAutomata.exe"+7E8A30: 41 0F 29 48 F0              -  movaps [r8-10],xmm1
-// ---------- DONE INJECTING  ----------
-"NieRAutomata.exe"+7E8A35: 48 FF C8                    -  dec rax
-"NieRAutomata.exe"+7E8A38: 75 A6                       -  jne NieRAutomata.exe+7E89E0
-"NieRAutomata.exe"+7E8A3A: 0F 28 02                    -  movaps xmm0,[rdx]
-"NieRAutomata.exe"+7E8A3D: 41 0F 29 00                 -  movaps [r8],xmm0
-"NieRAutomata.exe"+7E8A41: 0F 28 4A 10                 -  movaps xmm1,[rdx+10]
-"NieRAutomata.exe"+7E8A45: 41 0F 29 48 10              -  movaps [r8+10],xmm1
-"NieRAutomata.exe"+7E8A4A: 0F 28 42 20                 -  movaps xmm0,[rdx+20]
-"NieRAutomata.exe"+7E8A4E: 41 0F 29 40 20              -  movaps [r8+20],xmm0
-"NieRAutomata.exe"+7E8A53: 0F 28 4A 30                 -  movaps xmm1,[rdx+30]
-"NieRAutomata.exe"+7E8A57: 41 0F 29 48 30              -  movaps [r8+30],xmm1
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>109</ID>
-      <Description>"保存游戏时，材料访问"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-
-aobscanmodule(INJECT,NieRAutomata.exe,0F 28 4A F0 0F 29 43 E0 0F 29 4B F0 48 FF CE) // should be unique
-alloc(newmem,$1000,"NieRAutomata.exe"+7E44C1)
-
-label(code)
-label(return)
-
-newmem:
-  mov [rdx-10], (int)99
-code:
-  movaps xmm1,[rdx-10]
-  movaps [rbx-20],xmm0
-  jmp return
-
-INJECT:
-  jmp newmem
-  nop 3
-return:
-registersymbol(INJECT)
-
-[DISABLE]
-
-INJECT:
-  db 0F 28 4A F0 0F 29 43 E0
-
-unregistersymbol(INJECT)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NieRAutomata.exe"+7E44C1
-
-"NieRAutomata.exe"+7E4499: 0F 28 42 A0                    -  movaps xmm0,[rdx-60]
-"NieRAutomata.exe"+7E449D: 0F 29 4B 90                    -  movaps [rbx-70],xmm1
-"NieRAutomata.exe"+7E44A1: 0F 28 4A B0                    -  movaps xmm1,[rdx-50]
-"NieRAutomata.exe"+7E44A5: 0F 29 43 A0                    -  movaps [rbx-60],xmm0
-"NieRAutomata.exe"+7E44A9: 0F 28 42 C0                    -  movaps xmm0,[rdx-40]
-"NieRAutomata.exe"+7E44AD: 0F 29 4B B0                    -  movaps [rbx-50],xmm1
-"NieRAutomata.exe"+7E44B1: 0F 28 4A D0                    -  movaps xmm1,[rdx-30]
-"NieRAutomata.exe"+7E44B5: 0F 29 43 C0                    -  movaps [rbx-40],xmm0
-"NieRAutomata.exe"+7E44B9: 0F 28 42 E0                    -  movaps xmm0,[rdx-20]
-"NieRAutomata.exe"+7E44BD: 0F 29 4B D0                    -  movaps [rbx-30],xmm1
-// ---------- INJECTING HERE ----------
-"NieRAutomata.exe"+7E44C1: 0F 28 4A F0                    -  movaps xmm1,[rdx-10]
-"NieRAutomata.exe"+7E44C5: 0F 29 43 E0                    -  movaps [rbx-20],xmm0
-// ---------- DONE INJECTING  ----------
-"NieRAutomata.exe"+7E44C9: 0F 29 4B F0                    -  movaps [rbx-10],xmm1
-"NieRAutomata.exe"+7E44CD: 48 FF CE                       -  dec rsi
-"NieRAutomata.exe"+7E44D0: 75 AE                          -  jne NieRAutomata.exe+7E4480
-"NieRAutomata.exe"+7E44D2: 0F 28 02                       -  movaps xmm0,[rdx]
-"NieRAutomata.exe"+7E44D5: 0F 28 4A 10                    -  movaps xmm1,[rdx+10]
-"NieRAutomata.exe"+7E44D9: 0F 29 03                       -  movaps [rbx],xmm0
-"NieRAutomata.exe"+7E44DC: 0F 28 42 20                    -  movaps xmm0,[rdx+20]
-"NieRAutomata.exe"+7E44E0: 0F 29 4B 10                    -  movaps [rbx+10],xmm1
-"NieRAutomata.exe"+7E44E4: 0F 28 4A 30                    -  movaps xmm1,[rdx+30]
-"NieRAutomata.exe"+7E44E8: 0F 29 43 20                    -  movaps [rbx+20],xmm0
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>110</ID>
-      <Description>"无描述"</Description>
-      <LastState RealAddress="0D90CD90"/>
-      <VariableType>String</VariableType>
-      <Length>16</Length>
-      <Unicode>1</Unicode>
-      <CodePage>0</CodePage>
-      <ZeroTerminate>1</ZeroTerminate>
-      <Address>0D90CD90</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>111</ID>
-      <Description>"无描述"</Description>
-      <LastState RealAddress="0D90CDF0"/>
-      <VariableType>String</VariableType>
-      <Length>12</Length>
-      <Unicode>1</Unicode>
-      <CodePage>0</CodePage>
-      <ZeroTerminate>1</ZeroTerminate>
-      <Address>0D90CDF0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>112</ID>
-      <Description>"无描述"</Description>
-      <LastState RealAddress="57B28906"/>
-      <VariableType>String</VariableType>
-      <Length>16</Length>
-      <Unicode>1</Unicode>
-      <CodePage>0</CodePage>
-      <ZeroTerminate>1</ZeroTerminate>
-      <Address>57B28906</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>113</ID>
-      <Description>"无描述"</Description>
-      <LastState RealAddress="57B28942"/>
-      <VariableType>String</VariableType>
-      <Length>12</Length>
-      <Unicode>1</Unicode>
-      <CodePage>0</CodePage>
-      <ZeroTerminate>1</ZeroTerminate>
-      <Address>57B28942</Address>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
-    <CodeEntry Color="20000000">
-      <Description>替换了 dec [rcx+000128DC]</Description>
-      <AddressString>NieRAutomata.exe+20DB0A</AddressString>
-      <Before>
-        <Byte>28</Byte>
-        <Byte>01</Byte>
-        <Byte>00</Byte>
-        <Byte>EB</Byte>
-        <Byte>06</Byte>
-      </Before>
-      <Actual>
-        <Byte>FF</Byte>
-        <Byte>89</Byte>
-        <Byte>DC</Byte>
-        <Byte>28</Byte>
-        <Byte>01</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>01</Byte>
-        <Byte>48</Byte>
-        <Byte>8D</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>替换了 jg NieRAutomata.exe+5DD019</Description>
-      <AddressString>NieRAutomata.exe+5DCFFE</AddressString>
-      <Before>
-        <Byte>08</Byte>
-        <Byte>83</Byte>
-        <Byte>78</Byte>
-        <Byte>08</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>7F</Byte>
-        <Byte>19</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>C7</Byte>
-        <Byte>00</Byte>
-        <Byte>FF</Byte>
-        <Byte>FF</Byte>
-      </After>
-    </CodeEntry>
     <CodeEntry Color="20000000">
       <Description>消耗材料</Description>
       <AddressString>NieRAutomata.exe+5DCFF6</AddressString>
@@ -879,6 +921,110 @@ dealloc(newmem)
         <Byte>24</Byte>
         <Byte>18</Byte>
         <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>a2 暴走</Description>
+      <AddressString>NieRAutomata.exe+213B9E</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>2C</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>8B</Byte>
+        <Byte>68</Byte>
+        <Byte>06</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>39</Byte>
+        <Byte>3D</Byte>
+        <Byte>82</Byte>
+        <Byte>CC</Byte>
+        <Byte>26</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>a2暴走屏幕抖动</Description>
+      <AddressString>NieRAutomata.exe+213B4F</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>B8</Byte>
+        <Byte>2A</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>87</Byte>
+        <Byte>F3</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C7</Byte>
+        <Byte>83</Byte>
+        <Byte>B8</Byte>
+        <Byte>2A</Byte>
+        <Byte>01</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>入侵秒杀</Description>
+      <AddressString>NieRAutomata.exe+146B30</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>81</Byte>
+        <Byte>58</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>入侵敌人减血</Description>
+      <AddressString>NieRAutomata.exe+3276AF</AddressString>
+      <Before>
+        <Byte>0A</Byte>
+        <Byte>41</Byte>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>87</Byte>
+        <Byte>78</Byte>
+        <Byte>35</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>87</Byte>
+        <Byte>78</Byte>
+        <Byte>35</Byte>
         <Byte>00</Byte>
       </After>
     </CodeEntry>
@@ -2097,6 +2243,952 @@ dealloc(newmem)
         <Element Offset="1996" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
       </Elements>
     </Structure>
+    <Structure Name="未命名的结构" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="Byte" Bytesize="1" DisplayMethod="无符号整数"/>
+        <Element Offset="8" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="12" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="28" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="32" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="40" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="44" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="60" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="64" Vartype="Float" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="88" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="96" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="112" Vartype="Float" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="124" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="132" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="140" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="144" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="152" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="156" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="160" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="188" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="196" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="208" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="216" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="228" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="236" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="248" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="256" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="260" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="272" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="280" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="292" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="300" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="312" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="320" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="328" Vartype="String" Bytesize="6" DisplayMethod="无符号整数"/>
+        <Element Offset="334" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="336" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="344" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="352" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Baa010" DisplayMethod="无符号整数"/>
+        <Element Offset="360" Vartype="4 Bytes" Bytesize="4" RLECount="22" DisplayMethod="无符号整数"/>
+        <Element Offset="448" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="464" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="468" Vartype="Float" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="496" Vartype="4 Bytes" Bytesize="4" RLECount="15" DisplayMethod="无符号整数"/>
+        <Element Offset="556" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="564" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="572" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="576" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="584" Vartype="4 Bytes" Bytesize="4" RLECount="34" DisplayMethod="无符号整数"/>
+        <Element Offset="720" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Hw::cConstantBufferImpl" DisplayMethod="无符号整数"/>
+        <Element Offset="728" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="768" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="784" Vartype="4 Bytes" Bytesize="4" RLECount="28" DisplayMethod="无符号整数"/>
+        <Element Offset="896" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="904" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="912" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="936" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="944" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="952" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="960" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="968" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="984" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="992" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1000" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1016" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1020" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1024" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1040" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="1088" Vartype="Float" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1112" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1128" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1136" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1160" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1168" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1176" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1184" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1192" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1232" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1240" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1248" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1256" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1296" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1304" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of cModelExtendWork" DisplayMethod="无符号整数"/>
+        <Element Offset="1312" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1320" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1336" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1344" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1352" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1360" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1384" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1392" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1400" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1408" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1416" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1440" Vartype="String" Bytesize="5" DisplayMethod="无符号整数"/>
+        <Element Offset="1445" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1447" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1449" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1452" Vartype="4 Bytes" Bytesize="4" RLECount="14" DisplayMethod="无符号整数"/>
+        <Element Offset="1508" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1516" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1524" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="1552" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1568" Vartype="4 Bytes" Bytesize="4" RLECount="20" DisplayMethod="无符号整数"/>
+        <Element Offset="1648" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1656" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1680" Vartype="String" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1684" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1688" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1696" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1704" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Baa010" DisplayMethod="无符号整数"/>
+        <Element Offset="1712" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1728" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1752" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExActionState" DisplayMethod="无符号整数"/>
+        <Element Offset="1760" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1768" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExNpc" DisplayMethod="无符号整数"/>
+        <Element Offset="1776" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1784" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExWaypoint" DisplayMethod="无符号整数"/>
+        <Element Offset="1792" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1800" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExExpInfo" DisplayMethod="无符号整数"/>
+        <Element Offset="1808" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1816" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExCollision" DisplayMethod="无符号整数"/>
+        <Element Offset="1824" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1832" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExLockOn" DisplayMethod="无符号整数"/>
+        <Element Offset="1840" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1848" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExDamage" DisplayMethod="无符号整数"/>
+        <Element Offset="1856" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1864" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExAttack" DisplayMethod="无符号整数"/>
+        <Element Offset="1872" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1880" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExCatch" DisplayMethod="无符号整数"/>
+        <Element Offset="1888" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1896" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExIK" DisplayMethod="无符号整数"/>
+        <Element Offset="1904" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1912" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExEnemyAreas" DisplayMethod="无符号整数"/>
+        <Element Offset="1920" Vartype="4 Bytes" Bytesize="4" RLECount="32" DisplayMethod="无符号整数"/>
+        <Element Offset="2048" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2056" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="无符号整数"/>
+        <Element Offset="2092" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2100" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2104" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2112" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2144" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2152" Vartype="4 Bytes" Bytesize="4" RLECount="29" DisplayMethod="无符号整数"/>
+        <Element Offset="2268" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2276" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2280" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2288" Vartype="4 Bytes" Bytesize="4" RLECount="31" DisplayMethod="无符号整数"/>
+        <Element Offset="2412" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2420" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="2468" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2476" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2480" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2488" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2504" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2520" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="2528" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2536" Vartype="4 Bytes" Bytesize="4" RLECount="36" DisplayMethod="无符号整数"/>
+        <Element Offset="2680" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="2696" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2704" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2708" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2716" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2720" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2728" Vartype="4 Bytes" Bytesize="4" RLECount="16" DisplayMethod="无符号整数"/>
+        <Element Offset="2792" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2800" Vartype="4 Bytes" Bytesize="4" RLECount="54" DisplayMethod="无符号整数"/>
+        <Element Offset="3016" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3024" Vartype="4 Bytes" Bytesize="4" RLECount="27" DisplayMethod="无符号整数"/>
+        <Element Offset="3132" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3140" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="无符号整数"/>
+        <Element Offset="3176" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3184" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3188" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3196" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3200" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3208" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3220" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3228" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3232" Vartype="Pointer" Bytesize="8" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3264" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3280" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of lib::helper::AllocatorProxy::CoreT&lt;sys::AllocatorByHeap&gt;" DisplayMethod="无符号整数"/>
+        <Element Offset="3288" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of lib::detail::SharedCoreImpl&lt;lib::helper::AllocatorProxy::CoreT&lt;sys::AllocatorByHeap&gt;,lib::helper::DeleterByAllocator&lt;sys::AllocatorByHeap&gt;,sys::AllocatorByHeap&gt;" DisplayMethod="无符号整数"/>
+        <Element Offset="3296" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3312" Vartype="4 Bytes" Bytesize="4" RLECount="44" DisplayMethod="无符号整数"/>
+        <Element Offset="3488" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3496" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="3520" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3536" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3560" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3576" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3584" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3592" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3600" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3632" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3640" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="3680" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3688" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3696" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3704" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3712" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3724" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3732" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="无符号整数"/>
+        <Element Offset="3752" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3760" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3763" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3765" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3768" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3776" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3792" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3795" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3797" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3800" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3808" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="3836" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3844" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3848" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3864" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3880" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3888" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3896" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3904" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3936" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3944" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="3984" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3992" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="4000" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4008" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="4016" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="4028" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4036" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="无符号整数"/>
+        <Element Offset="4056" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4064" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="4080" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+      </Elements>
+    </Structure>
+    <Structure Name="未命名的结构" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="8" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="12" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="28" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="32" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="40" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="44" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="60" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="64" Vartype="Float" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="88" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="96" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="112" Vartype="Float" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="124" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="132" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="140" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="144" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="152" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="156" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="160" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="188" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="196" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="208" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="216" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="228" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="236" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="248" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="256" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="260" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="272" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="280" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="292" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="300" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="312" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="320" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="328" Vartype="String" Bytesize="6" DisplayMethod="无符号整数"/>
+        <Element Offset="334" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="336" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="344" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="352" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Baa010" DisplayMethod="无符号整数"/>
+        <Element Offset="360" Vartype="4 Bytes" Bytesize="4" RLECount="22" DisplayMethod="无符号整数"/>
+        <Element Offset="448" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="464" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="468" Vartype="Float" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="496" Vartype="4 Bytes" Bytesize="4" RLECount="15" DisplayMethod="无符号整数"/>
+        <Element Offset="556" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="564" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="572" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="576" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="584" Vartype="4 Bytes" Bytesize="4" RLECount="34" DisplayMethod="无符号整数"/>
+        <Element Offset="720" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Hw::cConstantBufferImpl" DisplayMethod="无符号整数"/>
+        <Element Offset="728" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="768" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="784" Vartype="4 Bytes" Bytesize="4" RLECount="28" DisplayMethod="无符号整数"/>
+        <Element Offset="896" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="904" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="912" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="936" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="944" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="952" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="960" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="968" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="984" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="992" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1000" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1016" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1020" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1024" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1040" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="1088" Vartype="Float" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1112" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1128" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1136" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1160" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1168" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1176" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1184" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1192" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1232" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1240" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1248" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1256" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1296" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1304" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of cModelExtendWork" DisplayMethod="无符号整数"/>
+        <Element Offset="1312" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1320" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1336" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1344" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1352" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1360" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1384" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1392" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1400" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1408" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1416" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1440" Vartype="String" Bytesize="5" DisplayMethod="无符号整数"/>
+        <Element Offset="1445" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1447" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1449" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1452" Vartype="4 Bytes" Bytesize="4" RLECount="14" DisplayMethod="无符号整数"/>
+        <Element Offset="1508" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1516" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1524" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="1552" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1568" Vartype="4 Bytes" Bytesize="4" RLECount="20" DisplayMethod="无符号整数"/>
+        <Element Offset="1648" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1656" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1680" Vartype="String" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1684" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1688" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1696" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1704" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Baa010" DisplayMethod="无符号整数"/>
+        <Element Offset="1712" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1728" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1752" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExActionState" DisplayMethod="无符号整数"/>
+        <Element Offset="1760" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1768" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExNpc" DisplayMethod="无符号整数"/>
+        <Element Offset="1776" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1784" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExWaypoint" DisplayMethod="无符号整数"/>
+        <Element Offset="1792" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1800" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExExpInfo" DisplayMethod="无符号整数"/>
+        <Element Offset="1808" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1816" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExCollision" DisplayMethod="无符号整数"/>
+        <Element Offset="1824" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1832" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExLockOn" DisplayMethod="无符号整数"/>
+        <Element Offset="1840" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1848" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExDamage" DisplayMethod="无符号整数"/>
+        <Element Offset="1856" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1864" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExAttack" DisplayMethod="无符号整数"/>
+        <Element Offset="1872" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1880" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExCatch" DisplayMethod="无符号整数"/>
+        <Element Offset="1888" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1896" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExIK" DisplayMethod="无符号整数"/>
+        <Element Offset="1904" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1912" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExEnemyAreas" DisplayMethod="无符号整数"/>
+        <Element Offset="1920" Vartype="4 Bytes" Bytesize="4" RLECount="32" DisplayMethod="无符号整数"/>
+        <Element Offset="2048" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2056" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="无符号整数"/>
+        <Element Offset="2092" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2100" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2104" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2112" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2144" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2152" Vartype="4 Bytes" Bytesize="4" RLECount="29" DisplayMethod="无符号整数"/>
+        <Element Offset="2268" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2276" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2280" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2288" Vartype="4 Bytes" Bytesize="4" RLECount="31" DisplayMethod="无符号整数"/>
+        <Element Offset="2412" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2420" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="2468" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2476" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2480" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2488" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2504" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2520" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="2528" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2536" Vartype="4 Bytes" Bytesize="4" RLECount="36" DisplayMethod="无符号整数"/>
+        <Element Offset="2680" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="2696" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2704" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2708" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2716" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2720" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2728" Vartype="4 Bytes" Bytesize="4" RLECount="16" DisplayMethod="无符号整数"/>
+        <Element Offset="2792" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2800" Vartype="4 Bytes" Bytesize="4" RLECount="54" DisplayMethod="无符号整数"/>
+        <Element Offset="3016" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3024" Vartype="4 Bytes" Bytesize="4" RLECount="27" DisplayMethod="无符号整数"/>
+        <Element Offset="3132" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3140" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="无符号整数"/>
+        <Element Offset="3176" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3184" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3188" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3196" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3200" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3208" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3220" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3228" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3232" Vartype="Pointer" Bytesize="8" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3264" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3280" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of lib::helper::AllocatorProxy::CoreT&lt;sys::AllocatorByHeap&gt;" DisplayMethod="无符号整数"/>
+        <Element Offset="3288" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of lib::detail::SharedCoreImpl&lt;lib::helper::AllocatorProxy::CoreT&lt;sys::AllocatorByHeap&gt;,lib::helper::DeleterByAllocator&lt;sys::AllocatorByHeap&gt;,sys::AllocatorByHeap&gt;" DisplayMethod="无符号整数"/>
+        <Element Offset="3296" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3312" Vartype="4 Bytes" Bytesize="4" RLECount="44" DisplayMethod="无符号整数"/>
+        <Element Offset="3488" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3496" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="3520" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3536" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3560" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3576" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3584" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3592" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3600" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3632" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3640" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="3680" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3688" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3696" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3704" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3712" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3724" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3732" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="无符号整数"/>
+        <Element Offset="3752" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3760" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3763" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3765" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3768" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3776" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3792" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3795" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3797" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3800" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3808" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="3836" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3844" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3848" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3864" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3880" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3888" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3896" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3904" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3936" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3944" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="3984" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3992" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="4000" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4008" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="4016" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="4028" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4036" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="无符号整数"/>
+        <Element Offset="4056" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4064" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="4080" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+      </Elements>
+    </Structure>
+    <Structure Name="未命名的结构" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="8" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="12" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="28" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="32" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="40" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="44" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="60" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="64" Vartype="Float" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="88" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="96" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="112" Vartype="Float" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="124" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="132" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="140" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="144" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="152" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="156" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="160" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="188" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="196" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="208" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="216" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="228" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="236" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="248" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="256" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="260" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="272" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="280" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="292" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="300" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="312" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="320" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="328" Vartype="String" Bytesize="6" DisplayMethod="无符号整数"/>
+        <Element Offset="334" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="336" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="344" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="352" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Baa010" DisplayMethod="无符号整数"/>
+        <Element Offset="360" Vartype="4 Bytes" Bytesize="4" RLECount="22" DisplayMethod="无符号整数"/>
+        <Element Offset="448" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="464" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="468" Vartype="Float" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="496" Vartype="4 Bytes" Bytesize="4" RLECount="15" DisplayMethod="无符号整数"/>
+        <Element Offset="556" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="564" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="572" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="576" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="584" Vartype="4 Bytes" Bytesize="4" RLECount="34" DisplayMethod="无符号整数"/>
+        <Element Offset="720" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Hw::cConstantBufferImpl" DisplayMethod="无符号整数"/>
+        <Element Offset="728" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="768" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="784" Vartype="4 Bytes" Bytesize="4" RLECount="28" DisplayMethod="无符号整数"/>
+        <Element Offset="896" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="904" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="912" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="936" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="944" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="952" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="960" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="968" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="984" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="992" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1000" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1016" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1020" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1024" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1040" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="1088" Vartype="Float" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1112" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1128" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1136" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1160" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1168" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1176" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1184" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1192" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1232" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1240" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1248" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1256" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1296" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1304" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of cModelExtendWork" DisplayMethod="无符号整数"/>
+        <Element Offset="1312" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1320" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1336" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1344" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1352" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1360" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1384" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1392" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1400" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1408" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1416" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1440" Vartype="String" Bytesize="5" DisplayMethod="无符号整数"/>
+        <Element Offset="1445" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1447" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1449" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1452" Vartype="4 Bytes" Bytesize="4" RLECount="14" DisplayMethod="无符号整数"/>
+        <Element Offset="1508" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1516" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1524" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="1552" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1568" Vartype="4 Bytes" Bytesize="4" RLECount="20" DisplayMethod="无符号整数"/>
+        <Element Offset="1648" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1656" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1680" Vartype="String" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1684" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1688" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1696" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1704" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Baa010" DisplayMethod="无符号整数"/>
+        <Element Offset="1712" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1728" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1752" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExActionState" DisplayMethod="无符号整数"/>
+        <Element Offset="1760" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1768" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExNpc" DisplayMethod="无符号整数"/>
+        <Element Offset="1776" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1784" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExWaypoint" DisplayMethod="无符号整数"/>
+        <Element Offset="1792" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1800" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExExpInfo" DisplayMethod="无符号整数"/>
+        <Element Offset="1808" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1816" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExCollision" DisplayMethod="无符号整数"/>
+        <Element Offset="1824" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1832" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExLockOn" DisplayMethod="无符号整数"/>
+        <Element Offset="1840" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1848" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExDamage" DisplayMethod="无符号整数"/>
+        <Element Offset="1856" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1864" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExAttack" DisplayMethod="无符号整数"/>
+        <Element Offset="1872" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1880" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExCatch" DisplayMethod="无符号整数"/>
+        <Element Offset="1888" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1896" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExIK" DisplayMethod="无符号整数"/>
+        <Element Offset="1904" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1912" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExEnemyAreas" DisplayMethod="无符号整数"/>
+        <Element Offset="1920" Vartype="4 Bytes" Bytesize="4" RLECount="32" DisplayMethod="无符号整数"/>
+        <Element Offset="2048" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2056" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="无符号整数"/>
+        <Element Offset="2092" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2100" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2104" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2112" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2144" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2152" Vartype="4 Bytes" Bytesize="4" RLECount="29" DisplayMethod="无符号整数"/>
+        <Element Offset="2268" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2276" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2280" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2288" Vartype="4 Bytes" Bytesize="4" RLECount="31" DisplayMethod="无符号整数"/>
+        <Element Offset="2412" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2420" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="2468" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2476" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2480" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2488" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2504" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2520" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="2528" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2536" Vartype="4 Bytes" Bytesize="4" RLECount="36" DisplayMethod="无符号整数"/>
+        <Element Offset="2680" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="2696" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2704" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2708" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2716" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2720" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2728" Vartype="4 Bytes" Bytesize="4" RLECount="16" DisplayMethod="无符号整数"/>
+        <Element Offset="2792" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2800" Vartype="4 Bytes" Bytesize="4" RLECount="54" DisplayMethod="无符号整数"/>
+        <Element Offset="3016" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3024" Vartype="4 Bytes" Bytesize="4" RLECount="27" DisplayMethod="无符号整数"/>
+        <Element Offset="3132" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3140" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="无符号整数"/>
+        <Element Offset="3176" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3184" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3188" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3196" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3200" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3208" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3220" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3228" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3232" Vartype="Pointer" Bytesize="8" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3264" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3280" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of lib::helper::AllocatorProxy::CoreT&lt;sys::AllocatorByHeap&gt;" DisplayMethod="无符号整数"/>
+        <Element Offset="3288" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of lib::detail::SharedCoreImpl&lt;lib::helper::AllocatorProxy::CoreT&lt;sys::AllocatorByHeap&gt;,lib::helper::DeleterByAllocator&lt;sys::AllocatorByHeap&gt;,sys::AllocatorByHeap&gt;" DisplayMethod="无符号整数"/>
+        <Element Offset="3296" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3312" Vartype="4 Bytes" Bytesize="4" RLECount="44" DisplayMethod="无符号整数"/>
+        <Element Offset="3488" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3496" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="3520" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3536" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3560" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3576" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3584" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3592" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3600" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3632" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3640" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="3680" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3688" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3696" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3704" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3712" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3724" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3732" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="无符号整数"/>
+        <Element Offset="3752" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3760" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3763" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3765" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3768" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3776" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3792" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3795" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3797" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3800" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3808" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="3836" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3844" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3848" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3864" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3880" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3888" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3896" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3904" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3936" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3944" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="3984" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3992" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="4000" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4008" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="4016" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="4028" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4036" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="无符号整数"/>
+        <Element Offset="4056" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4064" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="4080" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+      </Elements>
+    </Structure>
+    <Structure Name="未命名的结构" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="8" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="12" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="28" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="32" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="40" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="44" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="60" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="64" Vartype="Float" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="88" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="96" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="112" Vartype="Float" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="124" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="132" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="140" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="144" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="152" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="156" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="160" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="188" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="196" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="208" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="216" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="228" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="236" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="248" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="256" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="260" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="272" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="280" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="292" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="300" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="312" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="320" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="328" Vartype="String" Bytesize="6" DisplayMethod="无符号整数"/>
+        <Element Offset="334" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="336" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="344" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="352" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Baa010" DisplayMethod="无符号整数"/>
+        <Element Offset="360" Vartype="4 Bytes" Bytesize="4" RLECount="22" DisplayMethod="无符号整数"/>
+        <Element Offset="448" Vartype="Float" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="496" Vartype="4 Bytes" Bytesize="4" RLECount="15" DisplayMethod="无符号整数"/>
+        <Element Offset="556" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="564" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="572" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="576" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="584" Vartype="4 Bytes" Bytesize="4" RLECount="34" DisplayMethod="无符号整数"/>
+        <Element Offset="720" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Hw::cConstantBufferImpl" DisplayMethod="无符号整数"/>
+        <Element Offset="728" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="768" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="784" Vartype="4 Bytes" Bytesize="4" RLECount="28" DisplayMethod="无符号整数"/>
+        <Element Offset="896" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="904" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="912" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="936" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="944" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="952" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="960" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="968" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="984" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="992" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1000" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1016" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1020" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1024" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1040" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="1088" Vartype="Float" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1112" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1128" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1136" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1160" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1168" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1176" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1184" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1192" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1232" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1240" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1248" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1256" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="1296" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1304" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of cModelExtendWork" DisplayMethod="无符号整数"/>
+        <Element Offset="1312" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1320" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1336" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1344" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1352" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1360" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1384" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1392" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1400" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1408" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1416" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1440" Vartype="String" Bytesize="5" DisplayMethod="无符号整数"/>
+        <Element Offset="1445" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1447" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1449" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="1452" Vartype="4 Bytes" Bytesize="4" RLECount="14" DisplayMethod="无符号整数"/>
+        <Element Offset="1508" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1516" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1524" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="1552" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1568" Vartype="4 Bytes" Bytesize="4" RLECount="20" DisplayMethod="无符号整数"/>
+        <Element Offset="1648" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1656" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1680" Vartype="String" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1684" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="1688" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="1696" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1704" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of Baa010" DisplayMethod="无符号整数"/>
+        <Element Offset="1712" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1728" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="1752" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExActionState" DisplayMethod="无符号整数"/>
+        <Element Offset="1760" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1768" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExNpc" DisplayMethod="无符号整数"/>
+        <Element Offset="1776" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1784" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExWaypoint" DisplayMethod="无符号整数"/>
+        <Element Offset="1792" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1800" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExExpInfo" DisplayMethod="无符号整数"/>
+        <Element Offset="1808" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1816" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExCollision" DisplayMethod="无符号整数"/>
+        <Element Offset="1824" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1832" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExLockOn" DisplayMethod="无符号整数"/>
+        <Element Offset="1840" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1848" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExDamage" DisplayMethod="无符号整数"/>
+        <Element Offset="1856" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1864" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExAttack" DisplayMethod="无符号整数"/>
+        <Element Offset="1872" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1880" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExCatch" DisplayMethod="无符号整数"/>
+        <Element Offset="1888" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1896" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExIK" DisplayMethod="无符号整数"/>
+        <Element Offset="1904" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="1912" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of ExEnemyAreas" DisplayMethod="无符号整数"/>
+        <Element Offset="1920" Vartype="4 Bytes" Bytesize="4" RLECount="32" DisplayMethod="无符号整数"/>
+        <Element Offset="2048" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2056" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="无符号整数"/>
+        <Element Offset="2092" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2100" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2104" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2112" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2144" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2152" Vartype="4 Bytes" Bytesize="4" RLECount="29" DisplayMethod="无符号整数"/>
+        <Element Offset="2268" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2276" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2280" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2288" Vartype="4 Bytes" Bytesize="4" RLECount="31" DisplayMethod="无符号整数"/>
+        <Element Offset="2412" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2420" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="无符号整数"/>
+        <Element Offset="2468" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2476" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2480" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2488" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2504" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2520" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="2528" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2536" Vartype="4 Bytes" Bytesize="4" RLECount="36" DisplayMethod="无符号整数"/>
+        <Element Offset="2680" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="2696" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2704" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2708" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2716" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="2720" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2728" Vartype="4 Bytes" Bytesize="4" RLECount="16" DisplayMethod="无符号整数"/>
+        <Element Offset="2792" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="2800" Vartype="4 Bytes" Bytesize="4" RLECount="54" DisplayMethod="无符号整数"/>
+        <Element Offset="3016" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3024" Vartype="4 Bytes" Bytesize="4" RLECount="27" DisplayMethod="无符号整数"/>
+        <Element Offset="3132" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3140" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="无符号整数"/>
+        <Element Offset="3176" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3184" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3188" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3196" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3200" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3208" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3220" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3228" Vartype="Float" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3232" Vartype="Pointer" Bytesize="8" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3264" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3280" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of lib::helper::AllocatorProxy::CoreT&lt;sys::AllocatorByHeap&gt;" DisplayMethod="无符号整数"/>
+        <Element Offset="3288" Vartype="Pointer" Bytesize="8" Description="Pointer to instance of lib::detail::SharedCoreImpl&lt;lib::helper::AllocatorProxy::CoreT&lt;sys::AllocatorByHeap&gt;,lib::helper::DeleterByAllocator&lt;sys::AllocatorByHeap&gt;,sys::AllocatorByHeap&gt;" DisplayMethod="无符号整数"/>
+        <Element Offset="3296" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3312" Vartype="4 Bytes" Bytesize="4" RLECount="44" DisplayMethod="无符号整数"/>
+        <Element Offset="3488" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3496" Vartype="4 Bytes" Bytesize="4" RLECount="6" DisplayMethod="无符号整数"/>
+        <Element Offset="3520" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3536" Vartype="Pointer" Bytesize="8" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3560" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3576" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3584" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3592" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3600" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3632" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3640" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="3680" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3688" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3696" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3704" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3712" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3724" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3732" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="无符号整数"/>
+        <Element Offset="3752" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3760" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3763" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3765" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3768" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3776" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3792" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3795" Vartype="2 Bytes" Bytesize="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3797" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="3800" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3808" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="无符号整数"/>
+        <Element Offset="3836" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3844" Vartype="4 Bytes" Bytesize="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3848" Vartype="Pointer" Bytesize="8" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3864" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="3880" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3888" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="3896" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3904" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3936" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3944" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="无符号整数"/>
+        <Element Offset="3984" Vartype="Pointer" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="3992" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="4000" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4008" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="无符号整数"/>
+        <Element Offset="4016" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="无符号整数"/>
+        <Element Offset="4028" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4036" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="无符号整数"/>
+        <Element Offset="4056" Vartype="Double" Bytesize="8" DisplayMethod="无符号整数"/>
+        <Element Offset="4064" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+        <Element Offset="4080" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="无符号整数"/>
+      </Elements>
+    </Structure>
   </Structures>
   <Comments>材料的id大概是从: 0x1-0x1c7，0x1-0xFF
 银矿 = 13
@@ -2125,6 +3217,45 @@ for i=_start,_end do
     writeInteger(0x14194BF60+(i*3+0xC159)*4+8, 0x63)
     print(readInteger(0x14194BF60+(i*3+0xC159)*4+8))
 end
+---
+背包id， 1 - 455
+lea rdx,[14194BF60]
+// rax == 25
+lea rax,[rax+rax*2] 
+lea rax,[rax+0000C159]
+lea rax,[rdx+rax*4]
+// rax = 14194BF60 + C1C8 * 4 // 5de9d4
+// rax = 14194BF60 + 30720
+// rax = 14197C680
+// 调用材料函数
+mov ecx,[rdx+rax*4+005DC57C]
+add rcx,rdx
+mov edx,r10d
+// 材料函数
+edx = 258
+14194BF60+(0*3+C159)*4+8 =&gt; 1 4197 C4CC
+14194BF60+(1*3+C159)*4+8 =&gt; 1 4197 C4D8
+14194BF60+(2*3+C159)*4+8 =&gt; 1 4197 C4E4
+14194BF60+(3*3+C159)*4+8 =&gt; 1 4197 C4F0
+// 保存游戏时
+1407E44C1 - 0F28 4A F0  - movaps xmm1,[rdx-10]
+// 确认进入时
+1407E3C31 - 0F29 49 F0  - movaps [rcx-10],xmm1
+// 已经进时
+1407E8A2C - 0F28 4A F0  - movaps xmm1,[rdx-10]
+// 拾取材料时
+1405DD0F5 - 89 7B 08  - mov [rbx+08],edi
+// 购买
+1405DD0F5 - 89 7B 08  - mov [rbx+08],edi
+1405DCEBF - 8B 40 08  - mov eax,[rax+08]
+14194BF60+(材料id*3+C159)*4+8
+14194BF60 + C189 * 4+8
+// hp read a
+1401A6999 - 39 87 58080000  - cmp [rdi+00000858],eax
+// rp read b
+1401A6A0B - 8B 87 68060100  - mov eax,[rdi+00010668]
+// hp max read
+1401A6757 - 89 8F 5C080000  - mov [rdi+0000085C],ecx
 </Comments>
   <LuaScript>_start = 0
 
@@ -2141,6 +3272,36 @@ end
 print("end...")
 </LuaScript>
   <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+146B30</Address>
+      <Comment>入侵秒杀
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+213B4F</Address>
+      <Comment>a2暴走屏幕抖动
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+213B9E</Address>
+      <Comment>a2暴走
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+213BCA</Address>
+      <Comment>hp &gt; 1 跳
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+213BEF</Address>
+      <Comment>hp = 1
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"NieRAutomata.exe"+3276AF</Address>
+      <Comment>入侵敌人减血
+</Comment>
+    </DisassemblerComment>
     <DisassemblerComment>
       <Address>"NieRAutomata.exe"+5DCF70</Address>
       <Comment>eax &gt; 455
